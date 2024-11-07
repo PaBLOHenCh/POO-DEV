@@ -81,6 +81,30 @@ namespace AcademicNet.Data
                 .WithMany(t => t.ClassSubjects)
                 .HasForeignKey(cs => cs.TeacherId);
             
+            //definindo relações para os grupos de estudos e postagens
+            builder.Entity<StudentStudiesGroupModel>()
+                .HasKey(ssg => new { ssg.StudiesGroupId, ssg.StudentId });
+
+            builder.Entity<StudentModel>()
+                .HasMany(s => s.StudentStudiesGroups)
+                .WithOne(ssg => ssg.Student)
+                .HasForeignKey(ssg => ssg.StudentId);
+            builder.Entity<StudiesGroupModel>()
+                .HasMany(s => s.StudentStudiesGroups)
+                .WithOne(ssg => ssg.StudiesGroup)
+                .HasForeignKey(ssg => ssg.StudiesGroupId);
+            
+            builder.Entity<PostageModel>()
+                .HasOne(p => p.StudentStudiesGroup)
+                .WithMany(ssg => ssg.Postages)
+                .HasForeignKey(p => new { p.StudentStudiesGroupStudiesGroupId, p.StudentStudiesGroupStudentId });
+                
+            builder.Entity<PostageModel>()
+                .HasOne(p => p.ParentPostage)
+                .WithMany(pp => pp.Replies)
+                .HasForeignKey(r => r.ParentPostageId)
+                .OnDelete(DeleteBehavior.Restrict);
+            
         }
 
     }

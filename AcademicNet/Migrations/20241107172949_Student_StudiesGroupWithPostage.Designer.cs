@@ -3,6 +3,7 @@ using System;
 using AcademicNet.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AcademicNet.Migrations
 {
     [DbContext(typeof(AcademicNetDbContext))]
-    partial class AcademicNetDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241107172949_Student_StudiesGroupWithPostage")]
+    partial class Student_StudiesGroupWithPostage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -173,9 +176,6 @@ namespace AcademicNet.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int?>("ParentPostageId")
-                        .HasColumnType("integer");
-
                     b.Property<string>("PathToPhoto")
                         .IsRequired()
                         .HasColumnType("text");
@@ -191,8 +191,6 @@ namespace AcademicNet.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ParentPostageId");
 
                     b.HasIndex("StudentStudiesGroupStudiesGroupId", "StudentStudiesGroupStudentId");
 
@@ -480,18 +478,11 @@ namespace AcademicNet.Migrations
 
             modelBuilder.Entity("AcademicNet.Models.PostageModel", b =>
                 {
-                    b.HasOne("AcademicNet.Models.PostageModel", "ParentPostage")
-                        .WithMany("Replies")
-                        .HasForeignKey("ParentPostageId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.HasOne("AcademicNet.Models.StudentStudiesGroupModel", "StudentStudiesGroup")
                         .WithMany("Postages")
                         .HasForeignKey("StudentStudiesGroupStudiesGroupId", "StudentStudiesGroupStudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("ParentPostage");
 
                     b.Navigation("StudentStudiesGroup");
                 });
@@ -583,11 +574,6 @@ namespace AcademicNet.Migrations
             modelBuilder.Entity("AcademicNet.Models.CoordinatorModel", b =>
                 {
                     b.Navigation("Classes");
-                });
-
-            modelBuilder.Entity("AcademicNet.Models.PostageModel", b =>
-                {
-                    b.Navigation("Replies");
                 });
 
             modelBuilder.Entity("AcademicNet.Models.StudentModel", b =>

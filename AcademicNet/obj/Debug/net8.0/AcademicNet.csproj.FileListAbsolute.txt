@@ -118,3 +118,4 @@ C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet\obj
 C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet\obj\Debug\net8.0\AcademicNet.pdb
 C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet\obj\Debug\net8.0\AcademicNet.genruntimeconfig.cache
 C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet\obj\Debug\net8.0\ref\AcademicNet.dll
+C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet\obj\Debug\net8.0\AcademicNet.sourcelink.json
