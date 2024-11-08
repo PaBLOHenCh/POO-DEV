@@ -20,7 +20,10 @@ namespace AcademicNet.Models
         public int ClassSubjectClassId { get; set; }
         public int ClassSubjectSubjectId { get; set; }
 
-        //propriedade de navegação
+        //propriedades de navegação
         public ClassSubjectModel ClassSubject { get; set; }
+        public StudentModel Student { get; set; }
+        public SubjectModel Subject { get; set; }
+
     }
 }

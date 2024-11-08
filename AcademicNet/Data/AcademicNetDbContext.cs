@@ -20,10 +20,12 @@ namespace AcademicNet.Data
         public DbSet<StudentModel> Students { get; set; }
         public DbSet<CoordinatorModel> Coordinators { get; set; }
         public DbSet<TeacherModel> Teachers { get; set; }
+        public DbSet<UnitModel> Units { get; set; }
         public DbSet<AddressModel> Addresses { get; set; }
         public DbSet<SubjectModel> Subjects { get; set; }
         public DbSet<StudentSubjectModel> Matriculations { get; set; }
         public DbSet<ClassSubjectModel> ClassSubjects { get; set; }
+        public DbSet<StudiesGroupModel> StudiesGroups {get; set;}
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -37,22 +39,17 @@ namespace AcademicNet.Data
                 .HasKey(ss => new { ss.StudentId, ss.SubjectId});
 
             builder.Entity<StudentSubjectModel>()
-                .HasOne<StudentModel>()
+                .HasOne(ss => ss.Student)
                 .WithMany(s => s.StudentSubjects)
                 .HasForeignKey(ss => ss.StudentId);
 
             builder.Entity<StudentSubjectModel>()
-                .HasOne<SubjectModel>()
+                .HasOne(ss => ss.Subject)
                 .WithMany(s => s.StudentSubjects)
                 .HasForeignKey(ss => ss.SubjectId);
 
             //chave estrangeira composta de class_subject
-            builder.Entity<StudentSubjectModel>()
-                .HasOne<ClassSubjectModel>()
-                .WithMany(cs => cs.StudentSubjects)
-                .HasForeignKey(ss => new{ss.ClassSubjectClassId, ss.ClassSubjectSubjectId});
             //as relacoes one to many de class_subject com Subject e Class são feitas por data Annotations com o foreign key
-
             builder.Entity<StudentSubjectModel>()
                 .HasOne(ss => ss.ClassSubject)
                 .WithMany(cs => cs.StudentSubjects)
@@ -98,7 +95,7 @@ namespace AcademicNet.Data
                 .HasOne(p => p.StudentStudiesGroup)
                 .WithMany(ssg => ssg.Postages)
                 .HasForeignKey(p => new { p.StudentStudiesGroupStudiesGroupId, p.StudentStudiesGroupStudentId });
-                
+
             builder.Entity<PostageModel>()
                 .HasOne(p => p.ParentPostage)
                 .WithMany(pp => pp.Replies)
