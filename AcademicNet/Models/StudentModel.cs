@@ -10,9 +10,9 @@ namespace AcademicNet.Models
     [Table("Students")]
     public class StudentModel : UserModel
     {
-        public string PathToPhotoProfile { get; set; }
-        public float AVGGrade { get; private set; }
-        public float AVGFrequency { get; private set; }
+        public string? PathToPhotoProfile { get; set; }
+        public float? AVGGrade { get; private set; }
+        public float? AVGFrequency { get; private set; }
         
         [ForeignKey("Class")]
         public int? ClassId { get; set; }

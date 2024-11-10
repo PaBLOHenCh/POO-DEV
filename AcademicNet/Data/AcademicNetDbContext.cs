@@ -32,6 +32,12 @@ namespace AcademicNet.Data
             base.OnModelCreating(builder);
 
             builder.Entity<ClassSubjectModel>().ToTable("ClassSubject");
+
+            //configura o relacionamento entre classe e student
+            builder.Entity<StudentModel>()
+                .HasOne(s => s.Class)
+                .WithMany(c => c.Students)
+                .HasForeignKey(s => s.ClassId);
             
             //configura os relacionamentos student e subject para many to many
             //chave primaria composta de student e subject

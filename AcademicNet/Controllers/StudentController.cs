@@ -60,8 +60,8 @@ namespace AcademicNet.Controllers
             return NoContent();//204
         }
 
-        [HttpGet("ranking/{unitId}/{classId}/{subjectId}")]
-        public async Task<ICollection<RankingDTO>> GetRanking_perStudent(int? unitId, int? classId, int? subjectId)
+        [HttpGet("ranking")]
+        public async Task<ICollection<RankingDTO>> GetRanking_perStudent([FromQuery] int? unitId, [FromQuery] int? classId, [FromQuery] int? subjectId)
         {
             //Vou fazer os filtros de maneira iterada 
             //o filtro de classe acompanha o de unidade, já que não é possivel filtrar classe sem unidade
@@ -86,6 +86,10 @@ namespace AcademicNet.Controllers
                     query = query.Where(cs => cs.ClassId == classId);
                 } 
             }
+            else
+            {
+                
+            }
 
             IQueryable<StudentSubjectModel> intermediaryQuery = query.Include(cs => cs.StudentSubjects)
             .SelectMany(cs => cs.StudentSubjects);
@@ -95,17 +99,18 @@ namespace AcademicNet.Controllers
             if(subjectId == null)
             {
                 ranking = await orderedQuery
-                .GroupBy(ss => ss.Student)
+                .Include(ss => ss.Student.Class)  // Carrega a classe associada antes do agrupamento
+                .GroupBy(ss => ss.Student)  // Agrupa por estudante
+                .OrderByDescending(g => g.Average(g => g.Grade) * (decimal)g.Average(g => g.Frequency))
                 .Select(g => new RankingDTO
                 {
                     StudentName = g.Key.Name,
-                    GradeFrequency = g.Average(ss => ss.Grade) *(decimal)g.Average(ss => ss.Frequency),
-                    ClassName = g.Key.Class.Name
+                    GradeFrequency = g.Average(ss => ss.Grade) * (decimal)g.Average(ss => ss.Frequency),
+                    ClassName = g.Key.Class.Name, // Agora a classe já está carregada
+                    
                 })
                 .Take(100)
                 .ToListAsync();
-
-                return ranking;
             }
 
             ranking = await orderedQuery
@@ -114,6 +119,7 @@ namespace AcademicNet.Controllers
                 StudentName = ss.Student.Name,
                 ClassName = ss.ClassSubject.Class.Name,
                 GradeFrequency = ss.Grade * (decimal)ss.Frequency,
+                UnitName = unitId != null ? null : ss.Student.Class.Unit.Name //carrega o nome da unidade se não houver filtro de unidade
             })
             .Take(100)
             .ToListAsync();
@@ -121,8 +127,8 @@ namespace AcademicNet.Controllers
             return ranking;            
         }
 
-        [HttpGet("rankingAVG/{unitId}/{subjectId}")]
-        public async Task<ICollection<RankingDTO>> GetRanking_perUnit_Class(int? unitId, int? subjectId)
+        [HttpGet("rankingAVG")]
+        public async Task<ICollection<RankingDTO>> GetRanking_perUnit_Class([FromQuery] int? unitId, [FromQuery] int? subjectId)
         {
             IQueryable<ClassSubjectModel> query = _context.ClassSubjects;
             ICollection<RankingDTO> ranking;
@@ -137,11 +143,15 @@ namespace AcademicNet.Controllers
             if(unitId == null)
             {
                 ranking = await query.GroupBy(cs => cs.Unit)
+                .OrderByDescending(g => g.SelectMany(cs => cs.StudentSubjects).Average(ss => ss.Grade) *
+                    (decimal)g.SelectMany(cs => cs.StudentSubjects).Average(ss => ss.Frequency))
                 .Select(g => new RankingDTO
                 {
                     UnitName = g.Key.Name,
-                    GradeFrequency = g.Average(cs => cs.StudentSubjects.Average(ss => ss.Grade) * 
-                    (decimal)g.Average(cs => cs.StudentSubjects.Average(ss => ss.Frequency))),
+                    GradeFrequency = g.SelectMany(cs => cs.StudentSubjects).Average(ss => ss.Grade) *
+                    (decimal)g.SelectMany(cs => cs.StudentSubjects).Average(ss => ss.Frequency),
+                    //GradeFrequency = g.Average(cs => cs.StudentSubjects.Average(ss => ss.Grade) * 
+                    //(decimal)g.Average(cs => cs.StudentSubjects.Average(ss => ss.Frequency))),
                 })
                 .Take(10)
                 .ToListAsync();
@@ -153,11 +163,14 @@ namespace AcademicNet.Controllers
             if(unitId != null)
             {
                 ranking = await query.Where(cs => cs.UnitId == unitId)
-                .Select(cs => new RankingDTO
+                .GroupBy(cs => cs.Class)
+                .OrderByDescending(g => g.SelectMany(cs => cs.StudentSubjects).Average(ss => ss.Grade) *
+                    (decimal)g.SelectMany(cs => cs.StudentSubjects).Average(ss => ss.Frequency))
+                .Select(g => new RankingDTO
                 {
-                    ClassName = cs.Class.Name,
-                    GradeFrequency = cs.StudentSubjects.Average(ss => ss.Grade) *
-                    (decimal)cs.StudentSubjects.Average(ss => ss.Frequency)
+                    ClassName = g.Key.Name,
+                    GradeFrequency = g.SelectMany(cs => cs.StudentSubjects).Average(ss => ss.Grade) *
+                    (decimal)g.SelectMany(cs => cs.StudentSubjects).Average(ss => ss.Frequency),
                 })
                 .Take(20)
                 .ToListAsync();

@@ -10,8 +10,8 @@ namespace AcademicNet.Models
     [Table("Teachers")]
     public class TeacherModel : UserModel
     {
-        public string PathToPhotoProfile { get; set; }
-        public string Degree { get; set; }
+        public string? PathToPhotoProfile { get; set; }
+        public string? Degree { get; set; }
         public ICollection<ClassSubjectModel> ClassSubjects { get; set; } = new List<ClassSubjectModel>();
     }
 }
