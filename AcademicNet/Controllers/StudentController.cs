@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AcademicNet.Models;
+using AcademicNet.DTO;
 using Microsoft.EntityFrameworkCore;
 using AcademicNet.Data;
 
@@ -24,12 +25,32 @@ namespace AcademicNet.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult<StudentModel>> CreateStudent(StudentModel student)
+        public async Task<ActionResult<StudentModel>> CreateStudent([FromQuery]StudentCreateDTO student)
         {
-            _context.Students.Add(student);
+            var newStudent = new StudentModel{
+                Name = student.Name, 
+                Email = student.Email, 
+                Password = student.Password, 
+                Address = new AddressModel{
+                    Logradouro = student.Address.Logradouro,
+                    Numero = student.Address.Numero,
+                    Complemento = student.Address.Complemento,
+                    CEP = student.Address.CEP,
+                    Cidade = student.Address.Cidade,
+                    Bairro = student.Address.Bairro,
+                    Estado = student.Address.Estado,
+                    Referencia = student.Address.Referencia,
+                    Selecionado = student.Address.Selecionado
+                }, 
+                Phone = student.Phone, 
+                CPF = student.CPF, 
+                Role = IdentityRole.Student,
+                };
+            
+            _context.Students.Add(newStudent);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetStudentById), new { id = student.Id }, student);
+            return CreatedAtAction(nameof(GetStudentById), new { id = newStudent.Id });
         }
 
         [HttpGet("{id}")]
@@ -181,6 +202,42 @@ namespace AcademicNet.Controllers
             return null;
 
 
+        }
+
+        [HttpPost("createStudiesGroup")]
+        public async Task<IActionResult> CreateStudiesGroup([FromQuery]int studentId, [FromQuery] string name, [FromQuery] string description)
+        {
+            //cria um objeto que será a liga de estudos
+            StudiesGroupModel newLeague = new StudiesGroupModel {
+                Name = name,
+                Description = description
+            };
+
+            //se o modelo de liga de estudos for valido 
+            if(ModelState.IsValid)
+            {
+                //adiciona a liga de estudos ao banco
+                _context.StudiesGroups.Add(newLeague);
+                await _context.SaveChangesAsync();
+
+                //busca o estudante que criou a liga
+                StudentModel CreatorStudent = await _context.Students.FindAsync(studentId);
+                if(CreatorStudent != null)
+                {
+                    //adicionando a matricula do aluno que criou a liga na tabela de StudentStudiesGroup
+                    _context.StudentStudiesGroups.Add(new StudentStudiesGroupModel
+                    {
+                        Student = CreatorStudent,
+                        StudiesGroup = newLeague,
+                        StudentId = studentId,
+                        StudiesGroupId = newLeague.Id
+                    });
+                    await _context.SaveChangesAsync();
+                    return CreatedAtRoute("GetLeagueByStudentId", new{studentId = studentId});
+                }
+                return BadRequest(new {Message = "Estudante Criador não encontrado"});
+            }
+            return BadRequest(new {Message = "Erro ao criar Liga de Estudos"});
         }
     }
 }

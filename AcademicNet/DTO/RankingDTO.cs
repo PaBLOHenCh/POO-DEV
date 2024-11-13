@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AcademicNet.Models
+namespace AcademicNet.DTO
 {
     public class RankingDTO
     {

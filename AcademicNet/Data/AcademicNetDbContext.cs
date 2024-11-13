@@ -26,6 +26,8 @@ namespace AcademicNet.Data
         public DbSet<StudentSubjectModel> Matriculations { get; set; }
         public DbSet<ClassSubjectModel> ClassSubjects { get; set; }
         public DbSet<StudiesGroupModel> StudiesGroups {get; set;}
+        public DbSet<PostageModel> Postages {get; set;}
+        public DbSet<StudentStudiesGroupModel> StudentStudiesGroups {get; set;}
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -107,6 +109,9 @@ namespace AcademicNet.Data
                 .WithMany(pp => pp.Replies)
                 .HasForeignKey(r => r.ParentPostageId)
                 .OnDelete(DeleteBehavior.Restrict);
+            builder.Entity<PostageModel>()
+                .Property(p => p.CreationDate)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
             
         }
 
