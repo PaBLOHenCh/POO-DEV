@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using AcademicNet.Data;
 using Microsoft.AspNetCore.Identity;
+using AcademicNet.Interfaces;
+using AcademicNet.Services;
+using AcademicNet.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +22,11 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddDefaultTokenProviders();*/
 
 builder.Services.AddControllers();
+
+builder.Services.AddScoped<IStudentService, StudentService>();
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<IStudiesGroupService, StudiesGroupService>();
+builder.Services.AddScoped<IStudiesGroupRepository, StudiesGroupRepository>();
 
 var app = builder.Build();
 

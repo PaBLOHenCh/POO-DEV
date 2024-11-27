@@ -13,6 +13,8 @@ namespace AcademicNet.Models
         public string? PathToPhotoProfile { get; set; }
         public float? AVGGrade { get; private set; }
         public float? AVGFrequency { get; private set; }
+
+        public float? AVGGradeFrequency { get; private set; }
         
         [ForeignKey("Class")]
         public int? ClassId { get; set; }
@@ -20,27 +22,42 @@ namespace AcademicNet.Models
         public ICollection<StudentSubjectModel> StudentSubjects { get; set; } = new List<StudentSubjectModel>();
         public ICollection<StudentStudiesGroupModel> StudentStudiesGroups { get; set; } = new List<StudentStudiesGroupModel>();
 
-        public void CalculateAverageGrade(IEnumerable<StudentSubjectModel> studentSubjects)
+        public float CalculateAverageGrade()
         {
-            if (studentSubjects != null && studentSubjects.Any())
+            if (this.StudentSubjects != null && this.StudentSubjects.Any())
             {
-                AVGGrade = (float)studentSubjects.Average(ss => ss.Grade);
+                AVGGrade = (float)this.StudentSubjects.Average(ss => ss.Grade);
             }
             else
             {
                 AVGGrade = 0; // Se não houver disciplinas, a média é 0
             }
+            return AVGGrade.Value;
         }
-        public void CalculateAverageFrequency(IEnumerable<StudentSubjectModel> studentSubjects)
+        public float CalculateAverageFrequency()
         {
-            if (studentSubjects != null && studentSubjects.Any())
+            if (this.StudentSubjects != null && this.StudentSubjects.Any())
             {
-                AVGFrequency = (float)studentSubjects.Average(ss => ss.Frequency);
+                AVGFrequency = (float)this.StudentSubjects.Average(ss => ss.Frequency);
             }
             else
             {
                 AVGFrequency = 0; // Se não houver disciplinas, a média é 0
             }
+            return AVGFrequency.Value;
+        }
+
+        public float CalculateAverageGradeFrequency()
+        {
+            if (this.StudentSubjects != null && this.StudentSubjects.Any())
+            {
+                AVGGradeFrequency = (float)this.StudentSubjects.Average(ss => ss.Grade * ss.Frequency);
+            }
+            else
+            {
+                AVGGradeFrequency = 0; // Se não houver disciplinas, a média é 0
+            }
+            return AVGGradeFrequency.Value;
         }
     }
 }

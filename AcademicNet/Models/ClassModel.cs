@@ -13,6 +13,9 @@ namespace AcademicNet.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        public float AVGGrade { get; private set; }
+        public float AVGFrequency { get; private set; }
+        public float AVGGradeFrequency { get; private set; }
         public string Name { get; set; }
         [ForeignKey("Coordinator")]
         public int CoordinatorId {get; set;}
@@ -23,5 +26,39 @@ namespace AcademicNet.Models
         public UnitModel Unit {get; set;}
         public ICollection<ClassSubjectModel> ClassSubjects {get; set;} = new List<ClassSubjectModel>();
         public ICollection<StudentModel> Students {get; set;} = new List<StudentModel>();
+
+        public float CalculateAverageGrade()
+        {
+            if (this.ClassSubjects != null && this.ClassSubjects.Any())
+            {
+                AVGGrade = (float) this.ClassSubjects.Average(x => x.AVGGrade);
+            }
+            else
+            {
+                AVGGrade = 0;
+            }
+            return AVGGrade;
+        }
+
+        public float CalculateAverageFrequency()
+        {
+            if (this.ClassSubjects != null && this.ClassSubjects.Any())
+            {
+                AVGFrequency = (float) this.ClassSubjects.Average(x => x.AVGFrequency);
+            }
+            else
+            {
+                AVGFrequency = 0;
+            }
+
+            return AVGFrequency;
+        }
+
+        public float CalculateAverageGradeFrequency()
+        {
+            this.AVGGradeFrequency = this.AVGGrade * this.AVGFrequency;
+            return this.AVGGradeFrequency;
+        }
+
     }
 }

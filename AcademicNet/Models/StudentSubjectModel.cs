@@ -13,8 +13,10 @@ namespace AcademicNet.Models
         
         public int StudentId { get; set; }
         public int SubjectId { get; set; }
-        public decimal Grade { get; set; }
+        public float Grade { get; set; }
         public float Frequency { get; set; }
+
+        public float GradeFrequency { get; private set; }
 
         //chave estrangeira composta de class_subject
         public int ClassSubjectClassId { get; set; }
@@ -24,6 +26,12 @@ namespace AcademicNet.Models
         public ClassSubjectModel ClassSubject { get; set; }
         public StudentModel Student { get; set; }
         public SubjectModel Subject { get; set; }
+
+        public float CalculateAverageGradeFrequency()
+        {
+            this.GradeFrequency = this.Grade * this.Frequency;
+            return this.GradeFrequency;
+        }
 
     }
 }

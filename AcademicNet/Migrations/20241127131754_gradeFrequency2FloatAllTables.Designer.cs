@@ -3,6 +3,7 @@ using System;
 using AcademicNet.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AcademicNet.Migrations
 {
     [DbContext(typeof(AcademicNetDbContext))]
-    partial class AcademicNetDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241127131754_gradeFrequency2FloatAllTables")]
+    partial class gradeFrequency2FloatAllTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,9 +87,6 @@ namespace AcademicNet.Migrations
                     b.Property<float>("AVGGrade")
                         .HasColumnType("real");
 
-                    b.Property<float>("AVGGradeFrequency")
-                        .HasColumnType("real");
-
                     b.Property<int>("CoordinatorId")
                         .HasColumnType("integer");
 
@@ -103,7 +103,7 @@ namespace AcademicNet.Migrations
 
                     b.HasIndex("UnitId");
 
-                    b.ToTable("Classes");
+                    b.ToTable("ClassModel");
                 });
 
             modelBuilder.Entity("AcademicNet.Models.ClassSubjectModel", b =>
@@ -118,9 +118,6 @@ namespace AcademicNet.Migrations
                         .HasColumnType("real");
 
                     b.Property<float>("AVGGrade")
-                        .HasColumnType("real");
-
-                    b.Property<float>("AVGGradeFrequency")
                         .HasColumnType("real");
 
                     b.Property<int>("TeacherId")
@@ -311,9 +308,6 @@ namespace AcademicNet.Migrations
                     b.Property<float>("Grade")
                         .HasColumnType("real");
 
-                    b.Property<float>("GradeFrequency")
-                        .HasColumnType("real");
-
                     b.HasKey("StudentId", "SubjectId");
 
                     b.HasIndex("SubjectId");
@@ -422,12 +416,6 @@ namespace AcademicNet.Migrations
                         .HasColumnType("real");
 
                     b.Property<float>("AVGFrequencyPerClassSubject")
-                        .HasColumnType("real");
-
-                    b.Property<float>("AVGGradeFrequencyPerClass")
-                        .HasColumnType("real");
-
-                    b.Property<float>("AVGGradeFrequencyPerClassSubject")
                         .HasColumnType("real");
 
                     b.Property<float>("AVGGradePerClass")

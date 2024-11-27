@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using AcademicNet.Models;
+using AcademicNet.DTO;
 
 
 
@@ -25,6 +26,7 @@ namespace AcademicNet.Data
         public DbSet<SubjectModel> Subjects { get; set; }
         public DbSet<StudentSubjectModel> Matriculations { get; set; }
         public DbSet<ClassSubjectModel> ClassSubjects { get; set; }
+        public DbSet<ClassModel> Classes {get; set;}
         public DbSet<StudiesGroupModel> StudiesGroups {get; set;}
         public DbSet<PostageModel> Postages {get; set;}
         public DbSet<StudentStudiesGroupModel> StudentStudiesGroups {get; set;}

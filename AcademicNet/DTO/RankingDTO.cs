@@ -10,7 +10,7 @@ namespace AcademicNet.DTO
         public string? StudentName { get; set; }
         public string? ClassName { get; set; }
         public string? UnitName { get; set; }
-        public decimal GradeFrequency { get; set; }
+        public float GradeFrequency { get; set; }
     }
     
 }

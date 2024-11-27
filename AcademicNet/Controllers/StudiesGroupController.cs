@@ -6,6 +6,7 @@ using AcademicNet.Data;
 using AcademicNet.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using AcademicNet.Interfaces;
 
 namespace AcademicNet.Controllers
 {
@@ -14,26 +15,41 @@ namespace AcademicNet.Controllers
     public class StudiesGroupController : ControllerBase
     {
         private readonly AcademicNetDbContext _context;
+        private readonly IStudiesGroupService _studiesGroupService;
 
-        public StudiesGroupController(AcademicNetDbContext context)
+        public StudiesGroupController(AcademicNetDbContext context, IStudiesGroupService studiesGroupService)
         {
             _context = context;
+            _studiesGroupService = studiesGroupService;
         }
 
         [HttpGet("loadStudiesGroup", Name = "GetLeagueByStudentId")]
-        public async Task<ICollection<StudentStudiesGroupModel>> LoadStudiesGroups_byStudent([FromQuery] int? studentId)
+        public async Task<ActionResult<IEnumerable<StudiesGroupModel>>> LoadStudiesGroups_byStudent([FromQuery] int studentId)
         {
-            //ligas em que o estudante esta inserido
-            return await _context.StudentStudiesGroups.Where(ssg => ssg.StudentId == studentId).ToListAsync();
+            try
+            {
+                return Ok(await _studiesGroupService.LoadStudiesGroup_by_Student(studentId));
+            }
+            catch (ArgumentException e)
+            {
+                return NotFound(e.Message);
+            }
+            
         }
         [HttpGet("loadPostages")]
-        public async Task<ICollection<PostageModel>> LoadPostages_byStudiesGroup([FromQuery] int? studiesGroupId, [FromQuery] int? page = 0)
+        public async Task<ActionResult<IEnumerable<PostageModel>>> LoadPostages_byStudiesGroup([FromQuery] int? studentId, [FromQuery] int? studiesGroupId, [FromQuery] int? page)
         {
             
             //carregas as postagens em uma certa liga, por ordem de data
             //introduz a paginação das postagens de uma liga
-            return await _context.Postages.Where(p => p.StudentStudiesGroupStudiesGroupId == studiesGroupId).Where(p => p.ParentPostageId == null)
-                    .OrderBy(p => p.CreationDate).Skip((int)page* 10).Take(10).ToListAsync();
+            try
+            {
+                return Ok(await _studiesGroupService.LoadPostages_byStudiesGroup(studentId, studiesGroupId, page));
+            }
+            catch (ArgumentException e)
+            {
+                return NotFound(e.Message);
+            }
         }
         [HttpGet("loadReplies")]
         public async Task<ICollection<PostageModel>> LoadReplies_byPostage([FromQuery] int? postageId, [FromQuery] int? page = 0)
