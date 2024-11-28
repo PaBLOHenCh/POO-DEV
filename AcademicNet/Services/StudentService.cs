@@ -50,12 +50,12 @@ namespace AcademicNet.Services
             return student;
         }
 
-        public async Task DeleteStudentById(int id)
+        public async Task<StudentModel> DeleteStudentById(int id)
         {
             var student =  _studentRepository.GetStudentById(id);
             if(student != null)
             {
-                 _studentRepository.DeleteStudentById(id);   
+                return await _studentRepository.DeleteStudentById(id);   
             }
             else
             {
@@ -70,12 +70,12 @@ namespace AcademicNet.Services
                 if(subjectId != null)
                 {
                     //Ranking por disciplina universal
-                    return  _studentRepository.GetRanking_Student_perSubject(subjectId.Value);
+                    return  await _studentRepository.GetRanking_Student_perSubject(subjectId.Value);
                 }
                 else if(subjectId == null)
                 {
                     //Ranking universal
-                    var ranking = _studentRepository.GetRanking_AVGStudentUniversal();   
+                    var ranking = await _studentRepository.GetRanking_AVGStudentUniversal();   
                     return ranking;
                 }
             }
@@ -87,12 +87,12 @@ namespace AcademicNet.Services
                     if(subjectId != null)
                     {
                         //Ranking por disciplina dentro de uma classe e uma unidade
-                        return _studentRepository.GetRanking_Student_perUnit_Class_Subject(unitId.Value, classId.Value, subjectId.Value);
+                        return await _studentRepository.GetRanking_Student_perUnit_Class_Subject(unitId.Value, classId.Value, subjectId.Value);
                     }
                     else if(subjectId == null)
                     {
                         //Ranking sem disciplina especifica(nota média) dentro de uma classe e uma unidade
-                        return _studentRepository.GetRanking_Student_perUnit_Class(unitId.Value, classId.Value);
+                        return await _studentRepository.GetRanking_Student_perUnit_Class(unitId.Value, classId.Value);
                     }
                 }
                 else if(classId == null)
@@ -100,12 +100,12 @@ namespace AcademicNet.Services
                     if(subjectId != null)
                     {
                         //Ranking por disciplina dentro de uma unidade
-                        return  _studentRepository.GetRanking_Student_perUnit_Subject(unitId.Value, subjectId.Value);
+                        return  await _studentRepository.GetRanking_Student_perUnit_Subject(unitId.Value, subjectId.Value);
                     }
                     else if(subjectId == null)
                     {
                         //Ranking sem disciplina especifica(nota média) dentro de uma unidade
-                        return  _studentRepository.GetRanking_Student_perUnit(unitId.Value);
+                        return  await _studentRepository.GetRanking_Student_perUnit(unitId.Value);
                     }
                 }
             }
@@ -122,12 +122,12 @@ namespace AcademicNet.Services
                 if(subjectId != null)
                 {
                     //Ranking de classes por disciplina - universal
-                    return  _studentRepository.GetRanking_Class_perSubject_Universal(subjectId.Value);
+                    return  await _studentRepository.GetRanking_Class_perSubject_Universal(subjectId.Value);
                 }
                 else if(subjectId == null)
                 {
                     //Ranking de classes - universal
-                    return  _studentRepository.GetRanking_Class_Universal();
+                    return  await _studentRepository.GetRanking_Class_Universal();
                 }
             }
             else if(unitId != null)
@@ -137,12 +137,12 @@ namespace AcademicNet.Services
                     if(subjectId != null)
                     {
                         //Ranking de classes por disciplina dentro de uma unidade
-                        return  _studentRepository.GetRanking_Unit_Class_perSubject(unitId.Value, subjectId.Value);
+                        return  await _studentRepository.GetRanking_Unit_Class_perSubject(unitId.Value, subjectId.Value);
                     }
                     else if(subjectId == null)
                     {
                         //Ranking de classes sem disciplina especifica(nota média) dentro de uma unidade
-                        return  _studentRepository.GetRanking_Unit_Class_No_Subject(unitId.Value);
+                        return  await _studentRepository.GetRanking_Unit_Class_No_Subject(unitId.Value);
                     }
                 }
                 else if(classId != null)
@@ -150,7 +150,7 @@ namespace AcademicNet.Services
                     if(subjectId == null)
                     {
                         //Ranking de classes sem disciplina especifica(nota média) dentro de uma unidade e uma classe
-                        return  _studentRepository.GetRanking_Unit_Class(unitId.Value, classId.Value);
+                        return  await _studentRepository.GetRanking_Unit_Class(unitId.Value, classId.Value);
                     }
                 }
             }
@@ -164,12 +164,12 @@ namespace AcademicNet.Services
             if(subjectId == null)
             {
                 //Ranking universal
-                return  _studentRepository.GetRanking_Unit_Universal();
+                return  await _studentRepository.GetRanking_Unit_Universal();
             }
             else
             {
                 //Ranking dentro de uma unidade
-                return  _studentRepository.GetRanking_Unit_perSubject(subjectId.Value);
+                return  await _studentRepository.GetRanking_Unit_perSubject(subjectId.Value);
             }
             throw new ArgumentException("Os rankings de unidades so existem em relação a disciplinas ou que sejam universais.");
         }

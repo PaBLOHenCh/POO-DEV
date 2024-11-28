@@ -13,23 +13,23 @@ namespace AcademicNet.Interfaces
         public Task<StudentModel> GetStudentById(int id);
         public Task<StudentModel> DeleteStudentById(int id);
 
-        public IEnumerable<RankingDTO> GetRanking_AVGStudentUniversal();
-        public IEnumerable<RankingDTO> GetRanking_Student_perSubject(int subjectId);
-        public IEnumerable<RankingDTO> GetRanking_Student_perUnit_Class(int unitId, int classId);
-        public IEnumerable<RankingDTO> GetRanking_Student_perUnit_Class_Subject(int unitId, int classId, int subjectId);
-        public IEnumerable<RankingDTO> GetRanking_Student_perUnit_Subject(int unitId, int subjectId);
-        public IEnumerable<RankingDTO> GetRanking_Student_perUnit(int unitId);
+        public Task<IEnumerable<RankingDTO>> GetRanking_AVGStudentUniversal();
+        public Task<IEnumerable<RankingDTO>> GetRanking_Student_perSubject(int subjectId);
+        public Task<IEnumerable<RankingDTO>> GetRanking_Student_perUnit_Class(int unitId, int classId);
+        public Task<IEnumerable<RankingDTO>> GetRanking_Student_perUnit_Class_Subject(int unitId, int classId, int subjectId);
+        public Task<IEnumerable<RankingDTO>> GetRanking_Student_perUnit_Subject(int unitId, int subjectId);
+        public Task<IEnumerable<RankingDTO>> GetRanking_Student_perUnit(int unitId);
 
 
-        public IEnumerable<RankingDTO> GetRanking_Class_perSubject_Universal(int subjectId);
-        public IEnumerable<RankingDTO> GetRanking_Class_Universal();
-        public IEnumerable<RankingDTO> GetRanking_Unit_Class_perSubject(int unitId, int subjectId);
-        public IEnumerable<RankingDTO> GetRanking_Unit_Class_No_Subject(int unitId);
-        public IEnumerable<RankingDTO> GetRanking_Unit_Class(int unitId, int classId);
+        public Task<IEnumerable<RankingDTO>> GetRanking_Class_perSubject_Universal(int subjectId);
+        public Task<IEnumerable<RankingDTO>> GetRanking_Class_Universal();
+        public Task<IEnumerable<RankingDTO>> GetRanking_Unit_Class_perSubject(int unitId, int subjectId);
+        public Task<IEnumerable<RankingDTO>> GetRanking_Unit_Class_No_Subject(int unitId);
+        public Task<IEnumerable<RankingDTO>> GetRanking_Unit_Class(int unitId, int classId);
 
 
-        public IEnumerable<RankingDTO> GetRanking_Unit_Universal();
-        public IEnumerable<RankingDTO> GetRanking_Unit_perSubject(int subjectId);
+        public Task<IEnumerable<RankingDTO>> GetRanking_Unit_Universal();
+        public Task<IEnumerable<RankingDTO>> GetRanking_Unit_perSubject(int subjectId);
 
 
         

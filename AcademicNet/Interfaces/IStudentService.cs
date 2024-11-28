@@ -11,7 +11,7 @@ namespace AcademicNet.Interfaces
     {
         public Task<StudentModel> AddStudent(StudentCreateDTO student);
         public Task<StudentModel> GetStudentById(int id);
-        public Task DeleteStudentById(int id);
+        public Task<StudentModel> DeleteStudentById(int id);
 
         public Task<IEnumerable<RankingDTO>> GetRanking_perStudent(int? unitId, int? classId, int? subjectId);
 

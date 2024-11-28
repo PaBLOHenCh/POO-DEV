@@ -6,10 +6,9 @@ using AcademicNet.Interfaces;
 using AcademicNet.DTO;
 using AcademicNet.Data;
 using AcademicNet.Models;
-using System.Data.Entity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http.HttpResults;
-using System.Data.Entity.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 
 namespace AcademicNet.Repositories
 {
@@ -56,7 +55,7 @@ namespace AcademicNet.Repositories
 
         //rankings de estudante
 
-        public IEnumerable<RankingDTO> GetRanking_AVGStudentUniversal()
+        public async Task<IEnumerable<RankingDTO>> GetRanking_AVGStudentUniversal()
         {
 
             IQueryable<RankingDTO> query = _context.Students
@@ -71,15 +70,15 @@ namespace AcademicNet.Repositories
                 })
                 .Take(100);
 
-                var result = query.ToList();
+                var result = await query.ToListAsync();
 
  
                 return result;
         }
        
-        public IEnumerable<RankingDTO> GetRanking_Student_perSubject(int subjectId)
+        public async Task<IEnumerable<RankingDTO>> GetRanking_Student_perSubject(int subjectId)
         {
-            return _context.Matriculations.Where(m => m.SubjectId == subjectId)
+            return await _context.Matriculations.Where(m => m.SubjectId == subjectId)
                 .OrderByDescending(m => m.GradeFrequency)
                 .Select(m => new RankingDTO
                 {
@@ -89,12 +88,12 @@ namespace AcademicNet.Repositories
                     UnitName = m.ClassSubject.Unit.Name
                 })
                 .Take(100)
-                .ToList();
+                .ToListAsync();
         }
 
-        public IEnumerable<RankingDTO> GetRanking_Student_perUnit_Class(int unitId, int classId)
+        public async Task<IEnumerable<RankingDTO>> GetRanking_Student_perUnit_Class(int unitId, int classId)
         {
-            return _context.Students.Where(s => s.ClassId == classId && s.Class.UnitId == unitId)
+            return await _context.Students.Where(s => s.ClassId == classId && s.Class.UnitId == unitId)
                 .OrderByDescending(s => s.AVGGradeFrequency ?? 0)
                 .Select(s => new RankingDTO
                 {
@@ -103,12 +102,12 @@ namespace AcademicNet.Repositories
                     ClassName = s.Class.Name
                 })
                 .Take(100)
-                .ToList();
+                .ToListAsync();
         }
 
-        public IEnumerable<RankingDTO> GetRanking_Student_perUnit_Class_Subject(int unitId, int classId, int subjectId)
+        public async Task<IEnumerable<RankingDTO>> GetRanking_Student_perUnit_Class_Subject(int unitId, int classId, int subjectId)
         {
-            return _context.Matriculations.Where(m => m.ClassSubject.UnitId == unitId && m.ClassSubject.ClassId == classId && m.SubjectId == subjectId)
+            return await _context.Matriculations.Where(m => m.ClassSubject.UnitId == unitId && m.ClassSubject.ClassId == classId && m.SubjectId == subjectId)
                 .OrderByDescending(m => m.GradeFrequency)
                 .Select(m => new RankingDTO
                 {
@@ -118,12 +117,12 @@ namespace AcademicNet.Repositories
                     UnitName = m.ClassSubject.Unit.Name
                 })
                 .Take(100)
-                .ToList();
+                .ToListAsync();
         }
 
-        public IEnumerable<RankingDTO> GetRanking_Student_perUnit_Subject(int unitId, int subjectId)
+        public async Task<IEnumerable<RankingDTO>> GetRanking_Student_perUnit_Subject(int unitId, int subjectId)
         {
-            return _context.Matriculations.Where(m => m.ClassSubject.UnitId == unitId && m.SubjectId == subjectId)
+            return await _context.Matriculations.Where(m => m.ClassSubject.UnitId == unitId && m.SubjectId == subjectId)
                 .OrderByDescending(m => m.GradeFrequency)
                 .Select(m => new RankingDTO
                 {
@@ -132,20 +131,21 @@ namespace AcademicNet.Repositories
                     ClassName = m.ClassSubject.Class.Name,
                 })
                 .Take(100)
-                .ToList();
+                .ToListAsync();
         }
-        public IEnumerable<RankingDTO> GetRanking_Student_perUnit(int unitId)
+        public async Task<IEnumerable<RankingDTO>> GetRanking_Student_perUnit(int unitId)
         {
-            return _context.Students.Where(s => s.Class.UnitId == unitId)
+            return await _context.Students.Where(s => s.Class.UnitId == unitId)
                 .OrderByDescending(s => s.AVGGradeFrequency ?? 0)
                 .Select(s => new RankingDTO
                 {
                     StudentName = s.Name,
                     GradeFrequency = s.AVGGradeFrequency ?? 0,
-                    ClassName = s.Class.Name
+                    ClassName = s.Class.Name,
+                    UnitName = s.Class.Unit.Name
                 })
                 .Take(100)
-                .ToList();
+                .ToListAsync();
         }
         
 
@@ -153,9 +153,9 @@ namespace AcademicNet.Repositories
         //rankings de classe
 
 
-        public IEnumerable<RankingDTO> GetRanking_Class_perSubject_Universal(int subjectId)
+        public async Task<IEnumerable<RankingDTO>> GetRanking_Class_perSubject_Universal(int subjectId)
         {
-            return _context.ClassSubjects.Where(cs => cs.SubjectId == subjectId)
+            return await _context.ClassSubjects.Where(cs => cs.SubjectId == subjectId)
                 .OrderByDescending(cs => cs.AVGGradeFrequency)
                 .Select(cs => new RankingDTO
                 {
@@ -164,12 +164,12 @@ namespace AcademicNet.Repositories
                     GradeFrequency = cs.AVGGradeFrequency
                 })
                 .Take(100)
-                .ToList();
+                .ToListAsync();
         }
 
-        public IEnumerable<RankingDTO> GetRanking_Class_Universal()
+        public async Task<IEnumerable<RankingDTO>> GetRanking_Class_Universal()
         {
-            return _context.Classes
+            return await _context.Classes
                 .OrderByDescending(c => c.AVGGradeFrequency)
                 .Select(c => new RankingDTO
                 {
@@ -178,12 +178,12 @@ namespace AcademicNet.Repositories
                     GradeFrequency = c.AVGGradeFrequency
                 })
                 .Take(100)
-                .ToList();
+                .ToListAsync();
         }
 
-        public IEnumerable<RankingDTO> GetRanking_Unit_Class_perSubject(int unitId, int subjectId)
+        public async Task<IEnumerable<RankingDTO>> GetRanking_Unit_Class_perSubject(int unitId, int subjectId)
         {
-            return _context.Classes.Where(c => c.UnitId == unitId && c.ClassSubjects.Any(cs => cs.SubjectId == subjectId))
+            return await _context.Classes.Where(c => c.UnitId == unitId && c.ClassSubjects.Any(cs => cs.SubjectId == subjectId))
                 .OrderByDescending(c => c.AVGGradeFrequency)
                 .Select(c => new RankingDTO
                 {
@@ -192,12 +192,12 @@ namespace AcademicNet.Repositories
                     GradeFrequency = c.AVGGradeFrequency
                 })
                 .Take(100)
-                .ToList();
+                .ToListAsync();
         }
 
-        public IEnumerable<RankingDTO> GetRanking_Unit_Class_No_Subject(int unitId)
+        public async Task<IEnumerable<RankingDTO>> GetRanking_Unit_Class_No_Subject(int unitId)
         {
-            return _context.Classes.Where(c => c.UnitId == unitId)
+            return await _context.Classes.Where(c => c.UnitId == unitId)
                 .OrderByDescending(c => c.AVGGradeFrequency)
                 .Select(c => new RankingDTO
                 {
@@ -206,12 +206,12 @@ namespace AcademicNet.Repositories
                     GradeFrequency = c.AVGGradeFrequency
                 })
                 .Take(100)
-                .ToList();
+                .ToListAsync();
         }
         
-        public IEnumerable<RankingDTO> GetRanking_Unit_Class(int unitId, int classId)
+        public async Task<IEnumerable<RankingDTO>> GetRanking_Unit_Class(int unitId, int classId)
         {
-            return _context.Classes.Where(c => c.UnitId == unitId && c.Id == classId)
+            return await _context.Classes.Where(c => c.UnitId == unitId && c.Id == classId)
                 .OrderByDescending(c => c.AVGGradeFrequency)
                 .Select(c => new RankingDTO
                 {
@@ -220,15 +220,15 @@ namespace AcademicNet.Repositories
                     GradeFrequency = c.AVGGradeFrequency
                 })
                 .Take(100)
-                .ToList();
+                .ToListAsync();
         }
 
 
         //rankings de unidade
 
-        public IEnumerable<RankingDTO> GetRanking_Unit_Universal()
+        public async Task<IEnumerable<RankingDTO>> GetRanking_Unit_Universal()
         {
-            return _context.Units
+            return await _context.Units
                 .OrderByDescending(u => u.AVGGradeFrequencyPerClass)
                 .Select(u => new RankingDTO
                 {
@@ -236,12 +236,12 @@ namespace AcademicNet.Repositories
                     GradeFrequency = u.AVGGradeFrequencyPerClass
                 })
                 .Take(100)
-                .ToList();
+                .ToListAsync();
         }
 
-        public IEnumerable<RankingDTO> GetRanking_Unit_perSubject(int subjectId)
+        public async Task<IEnumerable<RankingDTO>> GetRanking_Unit_perSubject(int subjectId)
         {
-            return _context.Units.Where(u => u.ClassSubjects.Any(cs => cs.SubjectId == subjectId))
+            return await _context.Units.Where(u => u.ClassSubjects.Any(cs => cs.SubjectId == subjectId))
                 .OrderByDescending(u => u.AVGGradeFrequencyPerClassSubject)
                 .Select(u => new RankingDTO
                 {
@@ -249,13 +249,13 @@ namespace AcademicNet.Repositories
                     GradeFrequency = u.AVGGradeFrequencyPerClassSubject
                 })
                 .Take(100)
-                .ToList();
+                .ToListAsync();
         }
 
 
-        public IEnumerable<StudentSubjectModel> GetStudentSubjectByStudentId(int id)
+        public async Task<IEnumerable<StudentSubjectModel>> GetStudentSubjectByStudentId(int id)
         {
-            return  _context.Matriculations.Where(m => m.StudentId == id).ToList();
+            return  await _context.Matriculations.Where(m => m.StudentId == id).ToListAsync();
         }
     }
 }

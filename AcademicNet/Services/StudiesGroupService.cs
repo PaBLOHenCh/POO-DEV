@@ -2,13 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AcademicNet.DTO;
 using AcademicNet.Interfaces;
 using AcademicNet.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AcademicNet.Services
 {
-    public class StudiesGroupService : ControllerBase, IStudiesGroupService
+    public class StudiesGroupService : IStudiesGroupService
     {
         private readonly IStudiesGroupRepository _studiesGroupRepository;
         private readonly IStudentRepository _studentRepository;
@@ -18,14 +19,14 @@ namespace AcademicNet.Services
             _studiesGroupRepository = studiesGroupRepository;
             _studentRepository = studentRepository;
         }
-        public async Task<IActionResult> CreateStudiesGroup(int studentId, string name, string description)
+        public async Task<StudiesGroupModel> CreateStudiesGroup(int studentId, string name, string description)
         {
             //cria um objeto que será a liga de estudos
             StudiesGroupModel newLeague = new StudiesGroupModel {
                 Name = name,
                 Description = description
             };
-            if(ModelState.IsValid)
+            if(newLeague != null)
             {
                 await _studiesGroupRepository.CreateStudiesGroup(newLeague);
                 var creatorStudent = await _studentRepository.GetStudentById(studentId);
@@ -33,7 +34,7 @@ namespace AcademicNet.Services
                 {
                     //adiciona o estudante criador da liga de estudos
                     await _studiesGroupRepository.AddStudentToStudiesGroup(creatorStudent, newLeague);
-                    return Ok();
+                    return newLeague;
                 }
                 else
                 {
@@ -57,7 +58,7 @@ namespace AcademicNet.Services
             }
         }
 
-        public async Task<IEnumerable<PostageModel>> LoadPostages_byStudiesGroup(int? studentId, int? studiesGroupId, int? page)
+        public async Task<IEnumerable<PostageDTO>> LoadPostages_byStudiesGroup(int? studentId, int? studiesGroupId, int? page)
         {
             if (page == null)
             {
@@ -65,7 +66,7 @@ namespace AcademicNet.Services
             }
             if(studentId == null || studiesGroupId == null)
             {
-                throw new ArgumentException("O estudante ou a liga de estudos nao foram fornecidos.");
+                throw new KeyNotFoundException("O estudante ou a liga de estudos nao foram fornecidos.");
             }
             else
             {
@@ -73,6 +74,44 @@ namespace AcademicNet.Services
                 return postages;
             }
         }
+
+        public async Task<IEnumerable<PostageDTO>> LoadReplies_byPostage(int ? postageId, int? page)
+        {
+            if (page == null)
+            {
+                page = 0;
+            }
+            if (postageId == null)
+            {
+                throw new ArgumentException("Postagem nao foi fornecida.");
+            }
+            else
+            {
+                var replies = await _studiesGroupRepository.LoadReplies_byPostage(postageId.Value, page.Value);
+                return replies;
+            }
+        }
         
+        public async Task<PostageDTO> CreatePostage(int studentId, int studiesGroupId, string textBody, string? pathToPhoto, int? parentPostageId )
+        {
+            if (await _studentRepository.GetStudentById(studentId) == null)
+            {
+                throw new KeyNotFoundException($"Estudante com id {studentId} nao encontrado.");
+            }
+
+            if (await _studiesGroupRepository.GetStudiesGroupById(studiesGroupId) == null)
+            {
+                throw new KeyNotFoundException($"Liga de estudos com id {studiesGroupId} nao encontrada.");
+            }
+            if (parentPostageId != null)
+            {
+                return await _studiesGroupRepository.CreateReply(studentId, studiesGroupId, parentPostageId.Value, pathToPhoto, textBody);
+            }
+            else
+            {
+               return await _studiesGroupRepository.CreatePostage(studentId, studiesGroupId, textBody, pathToPhoto); 
+            }
+            
+        }
     }
 }

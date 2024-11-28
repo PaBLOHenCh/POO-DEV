@@ -19,6 +19,7 @@ namespace AcademicNet.Models
         [ForeignKey("Class")]
         public int? ClassId { get; set; }
         public ClassModel? Class { get; set; }
+        
         public ICollection<StudentSubjectModel> StudentSubjects { get; set; } = new List<StudentSubjectModel>();
         public ICollection<StudentStudiesGroupModel> StudentStudiesGroups { get; set; } = new List<StudentStudiesGroupModel>();
 
