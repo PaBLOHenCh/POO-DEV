@@ -71,12 +71,14 @@ namespace AcademicNet.Data
             builder.Entity<ClassSubjectModel>()
                 .HasOne(cs => cs.Subject)
                 .WithMany(s => s.ClassSubjects)
-                .HasForeignKey(cs => cs.SubjectId);
+                .HasForeignKey(cs => cs.SubjectId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<ClassSubjectModel>()
                 .HasOne(cs => cs.Class)
                 .WithMany(c => c.ClassSubjects)
-                .HasForeignKey(cs => cs.ClassId);
+                .HasForeignKey(cs => cs.ClassId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<ClassSubjectModel>()
                 .HasOne(cs => cs.Unit)
@@ -115,6 +117,10 @@ namespace AcademicNet.Data
                 .Property(p => p.CreationDate)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP");
             
+            builder.Entity<CoordinatorModel>()
+                .HasOne(c => c.Unit)
+                .WithMany(u => u.Coordinators)
+                .HasForeignKey(c => c.UnitId);
         }
 
     }

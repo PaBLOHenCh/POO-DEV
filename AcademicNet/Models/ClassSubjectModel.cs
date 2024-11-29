@@ -14,10 +14,10 @@ namespace AcademicNet.Models
         public int TeacherId { get; set; }
         public int UnitId { get; set; }
 
-        public float AVGGrade { get; private set; }
-        public float AVGFrequency { get; private set; }
+        public float? AVGGrade { get; private set; }
+        public float? AVGFrequency { get; private set; }
 
-        public float AVGGradeFrequency { get; private set; }
+        public float? AVGGradeFrequency { get; private set; }
 
         public ICollection<StudentSubjectModel> StudentSubjects { get; set; } = new List<StudentSubjectModel>();
 
@@ -36,7 +36,7 @@ namespace AcademicNet.Models
             {
                 AVGGrade = 0;
             }
-            return AVGGrade;
+            return AVGGrade.Value;
         }
 
         public float CalculateAverageFrequency()
@@ -50,13 +50,13 @@ namespace AcademicNet.Models
             {
                 AVGFrequency = 0;
             }
-            return AVGFrequency;
+            return AVGFrequency.Value;
         }
 
         public float CalculateAverageGradeFrequency()
         {
             this.AVGGradeFrequency = this.AVGGrade * this.AVGFrequency;
-            return this.AVGGradeFrequency;
+            return this.AVGGradeFrequency.Value;
         }
 
     }

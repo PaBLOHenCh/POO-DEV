@@ -12,10 +12,10 @@ namespace AcademicNet.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-
-        public float AVGGrade { get; private set; }
-        public float AVGFrequency { get; private set; }
-        public float AVGGradeFrequency { get; private set; }
+        public int Grade { get; set; }
+        public float? AVGGrade { get; private set; }
+        public float? AVGFrequency { get; private set; }
+        public float? AVGGradeFrequency { get; private set; }
         public string Name { get; set; }
         [ForeignKey("Coordinator")]
         public int CoordinatorId {get; set;}
@@ -37,7 +37,7 @@ namespace AcademicNet.Models
             {
                 AVGGrade = 0;
             }
-            return AVGGrade;
+            return AVGGrade.Value;
         }
 
         public float CalculateAverageFrequency()
@@ -51,13 +51,13 @@ namespace AcademicNet.Models
                 AVGFrequency = 0;
             }
 
-            return AVGFrequency;
+            return AVGFrequency.Value;
         }
 
         public float CalculateAverageGradeFrequency()
         {
             this.AVGGradeFrequency = this.AVGGrade * this.AVGFrequency;
-            return this.AVGGradeFrequency;
+            return this.AVGGradeFrequency.Value;
         }
 
     }

@@ -27,6 +27,10 @@ builder.Services.AddScoped<IStudentService, StudentService>();
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddScoped<IStudiesGroupService, StudiesGroupService>();
 builder.Services.AddScoped<IStudiesGroupRepository, StudiesGroupRepository>();
+builder.Services.AddScoped<IClassService, ClassService>();
+builder.Services.AddScoped<IClassRepository, ClassRepository>();
+builder.Services.AddScoped<ISubjectRepository, SubjectRepository>();
+builder.Services.AddScoped<ISubjectService, SubjectService>();
 
 var app = builder.Build();
 

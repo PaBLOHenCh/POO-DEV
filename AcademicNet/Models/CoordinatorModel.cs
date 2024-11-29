@@ -9,6 +9,8 @@ namespace AcademicNet.Models
     [Table("Coordinators")]
     public class CoordinatorModel : UserModel
     {
-        public ICollection<ClassModel> Classes { get; set; }
+        public ICollection<ClassModel> Classes { get; set; } = new List<ClassModel>();
+        public UnitModel? Unit { get; set; }
+        public int? UnitId { get; set; }
     }
 }

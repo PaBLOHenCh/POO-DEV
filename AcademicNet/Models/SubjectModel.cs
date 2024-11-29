@@ -14,9 +14,10 @@ namespace AcademicNet.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
-        public string? Description { get; set; }
+        public string Description { get; set; }
+        //parametro que indica qual série a disciplina pertence
+        public int Grade { get; set; }
         public ICollection<StudentSubjectModel> StudentSubjects { get; set; } = new List<StudentSubjectModel>();
-        //public int ClassId { get; set; }
         public ICollection<ClassSubjectModel> ClassSubjects { get; set; } = new List<ClassSubjectModel>();
         
 

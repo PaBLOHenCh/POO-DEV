@@ -161,7 +161,7 @@ namespace AcademicNet.Repositories
                 {
                     ClassName = cs.Class.Name,
                     UnitName = cs.Unit.Name,
-                    GradeFrequency = cs.AVGGradeFrequency
+                    GradeFrequency = cs.AVGGradeFrequency.Value
                 })
                 .Take(100)
                 .ToListAsync();
@@ -175,7 +175,7 @@ namespace AcademicNet.Repositories
                 {
                     ClassName = c.Name,
                     UnitName = c.Unit.Name,
-                    GradeFrequency = c.AVGGradeFrequency
+                    GradeFrequency = c.AVGGradeFrequency.Value
                 })
                 .Take(100)
                 .ToListAsync();
@@ -189,7 +189,7 @@ namespace AcademicNet.Repositories
                 {
                     ClassName = c.Name,
                     UnitName = c.Unit.Name,
-                    GradeFrequency = c.AVGGradeFrequency
+                    GradeFrequency = c.AVGGradeFrequency.Value
                 })
                 .Take(100)
                 .ToListAsync();
@@ -203,7 +203,7 @@ namespace AcademicNet.Repositories
                 {
                     ClassName = c.Name,
                     UnitName = c.Unit.Name,
-                    GradeFrequency = c.AVGGradeFrequency
+                    GradeFrequency = c.AVGGradeFrequency.Value
                 })
                 .Take(100)
                 .ToListAsync();
@@ -217,7 +217,7 @@ namespace AcademicNet.Repositories
                 {
                     ClassName = c.Name,
                     UnitName = c.Unit.Name,
-                    GradeFrequency = c.AVGGradeFrequency
+                    GradeFrequency = c.AVGGradeFrequency.Value
                 })
                 .Take(100)
                 .ToListAsync();

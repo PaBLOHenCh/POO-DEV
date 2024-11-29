@@ -3,6 +3,7 @@ using System;
 using AcademicNet.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AcademicNet.Migrations
 {
     [DbContext(typeof(AcademicNetDbContext))]
-    partial class AcademicNetDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241129164404_serieColumnOnClassAndRelationUnitCoordinator")]
+    partial class serieColumnOnClassAndRelationUnitCoordinator
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,13 +81,13 @@ namespace AcademicNet.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<float?>("AVGFrequency")
+                    b.Property<float>("AVGFrequency")
                         .HasColumnType("real");
 
-                    b.Property<float?>("AVGGrade")
+                    b.Property<float>("AVGGrade")
                         .HasColumnType("real");
 
-                    b.Property<float?>("AVGGradeFrequency")
+                    b.Property<float>("AVGGradeFrequency")
                         .HasColumnType("real");
 
                     b.Property<int>("CoordinatorId")
@@ -117,13 +120,13 @@ namespace AcademicNet.Migrations
                     b.Property<int>("SubjectId")
                         .HasColumnType("integer");
 
-                    b.Property<float?>("AVGFrequency")
+                    b.Property<float>("AVGFrequency")
                         .HasColumnType("real");
 
-                    b.Property<float?>("AVGGrade")
+                    b.Property<float>("AVGGrade")
                         .HasColumnType("real");
 
-                    b.Property<float?>("AVGGradeFrequency")
+                    b.Property<float>("AVGGradeFrequency")
                         .HasColumnType("real");
 
                     b.Property<int>("TeacherId")
@@ -177,7 +180,7 @@ namespace AcademicNet.Migrations
                     b.Property<int>("Role")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("UnitId")
+                    b.Property<int>("UnitId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -360,11 +363,7 @@ namespace AcademicNet.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<int>("Grade")
-                        .HasColumnType("integer");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -520,8 +519,10 @@ namespace AcademicNet.Migrations
                         .IsRequired();
 
                     b.HasOne("AcademicNet.Models.UnitModel", "Unit")
-                        .WithMany("Coordinators")
-                        .HasForeignKey("UnitId");
+                        .WithMany()
+                        .HasForeignKey("UnitId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Address");
 
@@ -676,8 +677,6 @@ namespace AcademicNet.Migrations
                     b.Navigation("ClassSubjects");
 
                     b.Navigation("Classes");
-
-                    b.Navigation("Coordinators");
                 });
 #pragma warning restore 612, 618
         }
