@@ -13,10 +13,12 @@ namespace AcademicNet.Repositories
     public class ClassRepository : IClassRepository
     {
         private readonly AcademicNetDbContext _context;
+        private readonly IUnitRepository _unitRepository;
 
-        public ClassRepository(AcademicNetDbContext context)
+        public ClassRepository(AcademicNetDbContext context, IUnitRepository unitRepository)
         {
             _context = context;
+            _unitRepository = unitRepository;
         }
 
         public async Task<ClassDTO> CreateClass(ClassDTO new_class, int coordinatorId, int teacherId)
@@ -83,6 +85,35 @@ namespace AcademicNet.Repositories
             };
         }
 
+        public async Task<ClassModel> UpdateAVGGradeFrequency_byClassId(int classId)
+        {
+            var classModel = await _context.Classes.FindAsync(classId);
+            if (classModel == null)
+            {
+                throw new KeyNotFoundException("Classe nao encontrada.");
+            }
+            
+            classModel.UpdateAllGradesAndFrequencies();
+            await _context.SaveChangesAsync();
+            await _unitRepository.UpdateAVGGradeFrequency_byUnitId(classModel.UnitId);
+
+            return classModel;
+        }
+
+        public async Task<ClassSubjectModel> UpdateAVGGradeFrequency_byClassSubjectId(int classId, int subjectId)
+        {
+            var classSubjectModel = await _context.ClassSubjects.FindAsync(classId, subjectId);
+            if (classSubjectModel == null)
+            {
+                throw new KeyNotFoundException("ClassSubject nao encontrada.");
+            }
+            
+            classSubjectModel.UpdateAllGradesAndFrequencies();
+            await _context.SaveChangesAsync();
+            await UpdateAVGGradeFrequency_byClassId(classSubjectModel.ClassId);
+            return classSubjectModel;
+        }
+
         private (ClassModel, int) PrepareClass(ClassDTO new_class, int coordinatorId)
         {
             var coordinator =  _context.Coordinators.Find(coordinatorId);
@@ -118,5 +149,7 @@ namespace AcademicNet.Repositories
 
             return ClassSubjects;
         }
+
+    
     }
 }

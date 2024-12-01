@@ -257,5 +257,18 @@ namespace AcademicNet.Repositories
         {
             return  await _context.Matriculations.Where(m => m.StudentId == id).ToListAsync();
         }
+    
+        public async Task<StudentModel> UpdateAVGGradeFrequencyByStudentId(int id)
+        {
+            var student = await _context.Students.FindAsync(id);
+            if (student == null)
+            {
+                throw new KeyNotFoundException($"Estudante com id {id} nao encontrado.");
+            }
+            student.UpdateAllGradesAndFrequencies();
+            await _context.SaveChangesAsync();
+            return student;
+        }
+    
     }
 }

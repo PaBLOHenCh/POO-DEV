@@ -26,7 +26,14 @@ namespace AcademicNet.Models
         public TeacherModel Teacher { get; set; }
         public UnitModel Unit { get; set; }
 
-        public float CalculateAverageGrade()
+        public void UpdateAllGradesAndFrequencies()
+        {
+            this.CalculateAverageGrade();
+            this.CalculateAverageFrequency();
+            this.CalculateAverageGradeFrequency();
+        }
+
+        private float CalculateAverageGrade()
         {
             if (this.StudentSubjects != null && this.StudentSubjects.Any())
             {
@@ -39,12 +46,11 @@ namespace AcademicNet.Models
             return AVGGrade.Value;
         }
 
-        public float CalculateAverageFrequency()
+        private float CalculateAverageFrequency()
         {
             if (this.StudentSubjects != null && this.StudentSubjects.Any())
             {
                 AVGFrequency = (float)this.StudentSubjects.Average(x => x.Frequency);
-                
             }
             else
             {
@@ -53,7 +59,7 @@ namespace AcademicNet.Models
             return AVGFrequency.Value;
         }
 
-        public float CalculateAverageGradeFrequency()
+        private float CalculateAverageGradeFrequency()
         {
             this.AVGGradeFrequency = this.AVGGrade * this.AVGFrequency;
             return this.AVGGradeFrequency.Value;

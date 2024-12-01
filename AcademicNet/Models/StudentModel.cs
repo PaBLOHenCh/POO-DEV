@@ -23,7 +23,14 @@ namespace AcademicNet.Models
         public ICollection<StudentSubjectModel> StudentSubjects { get; set; } = new List<StudentSubjectModel>();
         public ICollection<StudentStudiesGroupModel> StudentStudiesGroups { get; set; } = new List<StudentStudiesGroupModel>();
 
-        public float CalculateAverageGrade()
+        public void UpdateAllGradesAndFrequencies()
+        {
+            this.CalculateAverageGrade();
+            this.CalculateAverageFrequency();
+            this.CalculateAverageGradeFrequency();
+        }
+
+        private float CalculateAverageGrade()
         {
             if (this.StudentSubjects != null && this.StudentSubjects.Any())
             {
@@ -35,7 +42,7 @@ namespace AcademicNet.Models
             }
             return AVGGrade.Value;
         }
-        public float CalculateAverageFrequency()
+        private float CalculateAverageFrequency()
         {
             if (this.StudentSubjects != null && this.StudentSubjects.Any())
             {
@@ -48,7 +55,7 @@ namespace AcademicNet.Models
             return AVGFrequency.Value;
         }
 
-        public float CalculateAverageGradeFrequency()
+        private float CalculateAverageGradeFrequency()
         {
             if (this.StudentSubjects != null && this.StudentSubjects.Any())
             {

@@ -28,7 +28,15 @@ namespace AcademicNet.Models
         public float AVGFrequencyPerClassSubject { get; private set; }
         public float AVGFrequencyPerClass { get; private set; }
 
-        public float CalculateAverageGradePerClassSubject()
+        public void UpdateAllGradesAndFrequencies()
+        {
+            this.CalculateAverageGradePerClassSubject();
+            this.CalculateAverageGradePerClass();
+            this.CalculateAverageFrequencyPerClassSubject();
+            this.CalculateAverageFrequencyPerClass();
+        }
+
+        private float CalculateAverageGradePerClassSubject()
         {
             if (this.ClassSubjects != null && this.ClassSubjects.Any())
             {
@@ -42,7 +50,7 @@ namespace AcademicNet.Models
             return AVGGradePerClassSubject;
         }
 
-        public float CalculateAverageGradePerClass()
+        private float CalculateAverageGradePerClass()
         {
             if (this.Classes != null && this.Classes.Any())
             {
@@ -55,7 +63,7 @@ namespace AcademicNet.Models
             return AVGGradePerClass;
         }
 
-        public float CalculateAverageFrequencyPerClassSubject()
+        private float CalculateAverageFrequencyPerClassSubject()
         {
             if (this.ClassSubjects != null && this.ClassSubjects.Any())
             {
@@ -68,7 +76,7 @@ namespace AcademicNet.Models
             return AVGFrequencyPerClassSubject;
         }
 
-        public float CalculateAverageFrequencyPerClass()
+        private float CalculateAverageFrequencyPerClass()
         {
             if (this.Classes != null && this.Classes.Any())
             {
@@ -80,13 +88,13 @@ namespace AcademicNet.Models
             }
             return AVGFrequencyPerClass;
         }
-        public float CalculateAverageGradeFrequencyPerClassSubject()
+        private float CalculateAverageGradeFrequencyPerClassSubject()
         {
             this.AVGGradeFrequencyPerClassSubject =this.AVGFrequencyPerClassSubject * this.AVGGradePerClassSubject;
             return this.AVGGradeFrequencyPerClassSubject;
         }
 
-        public float CalculateAverageGradeFrequencyPerClass()
+        private float CalculateAverageGradeFrequencyPerClass()
         {
             this.AVGGradeFrequencyPerClass = this.AVGFrequencyPerClass * this.AVGGradePerClass;
             return this.AVGGradeFrequencyPerClass;

@@ -23,6 +23,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 
 builder.Services.AddControllers();
 
+//adicionando os serviços de repositorios e serviços as suas interfaces
 builder.Services.AddScoped<IStudentService, StudentService>();
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddScoped<IStudiesGroupService, StudiesGroupService>();
@@ -31,6 +32,9 @@ builder.Services.AddScoped<IClassService, ClassService>();
 builder.Services.AddScoped<IClassRepository, ClassRepository>();
 builder.Services.AddScoped<ISubjectRepository, SubjectRepository>();
 builder.Services.AddScoped<ISubjectService, SubjectService>();
+builder.Services.AddScoped<ITeacherService, TeacherService>();
+builder.Services.AddScoped<ITeacherRepository, TeacherRepository>();
+builder.Services.AddScoped<IUnitRepository, UnitRepository>();
 
 var app = builder.Build();
 

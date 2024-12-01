@@ -31,6 +31,8 @@ namespace AcademicNet.Interfaces
         public Task<IEnumerable<RankingDTO>> GetRanking_Unit_Universal();
         public Task<IEnumerable<RankingDTO>> GetRanking_Unit_perSubject(int subjectId);
 
+        public Task<StudentModel> UpdateAVGGradeFrequencyByStudentId(int id);
+
 
         
     }
