@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AcademicNet.Data;
 using AcademicNet.Interfaces;
 using AcademicNet.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace AcademicNet.Repositories
 {
@@ -19,7 +20,7 @@ namespace AcademicNet.Repositories
 
         public async Task<UnitModel> UpdateAVGGradeFrequency_byUnitId(int unitId)
         {
-            var unitModel = await _context.Units.FindAsync(unitId);
+            var unitModel = await _context.Units.Include(u => u.Classes).Include(u => u.ClassSubjects).FirstOrDefaultAsync(u => u.Id == unitId);
             if (unitModel == null)
             {
                 throw new KeyNotFoundException("Unidade nao encontrada.");

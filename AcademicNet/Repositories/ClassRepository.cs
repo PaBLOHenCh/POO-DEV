@@ -87,7 +87,10 @@ namespace AcademicNet.Repositories
 
         public async Task<ClassModel> UpdateAVGGradeFrequency_byClassId(int classId)
         {
-            var classModel = await _context.Classes.FindAsync(classId);
+            var classModel = await _context.Classes
+            .Include(cs => cs.ClassSubjects)
+            .FirstOrDefaultAsync(cs => cs.Id == classId);
+            
             if (classModel == null)
             {
                 throw new KeyNotFoundException("Classe nao encontrada.");
@@ -102,7 +105,10 @@ namespace AcademicNet.Repositories
 
         public async Task<ClassSubjectModel> UpdateAVGGradeFrequency_byClassSubjectId(int classId, int subjectId)
         {
-            var classSubjectModel = await _context.ClassSubjects.FindAsync(classId, subjectId);
+            var classSubjectModel = await _context.ClassSubjects
+            .Include(cs => cs.StudentSubjects)
+            .FirstOrDefaultAsync(cs => cs.ClassId == classId && cs.SubjectId == subjectId);
+
             if (classSubjectModel == null)
             {
                 throw new KeyNotFoundException("ClassSubject nao encontrada.");

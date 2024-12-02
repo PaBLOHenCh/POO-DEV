@@ -34,6 +34,8 @@ namespace AcademicNet.Models
             this.CalculateAverageGradePerClass();
             this.CalculateAverageFrequencyPerClassSubject();
             this.CalculateAverageFrequencyPerClass();
+            this.CalculateAverageGradeFrequencyPerClassSubject();
+            this.CalculateAverageGradeFrequencyPerClass();
         }
 
         private float CalculateAverageGradePerClassSubject()

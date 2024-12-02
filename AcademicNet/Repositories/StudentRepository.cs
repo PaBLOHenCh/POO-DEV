@@ -260,7 +260,11 @@ namespace AcademicNet.Repositories
     
         public async Task<StudentModel> UpdateAVGGradeFrequencyByStudentId(int id)
         {
-            var student = await _context.Students.FindAsync(id);
+            var student = await _context.Students
+            .Include(s => s.StudentSubjects)
+            .Where(s => s.Id == id)
+            .FirstOrDefaultAsync();
+            
             if (student == null)
             {
                 throw new KeyNotFoundException($"Estudante com id {id} nao encontrado.");
