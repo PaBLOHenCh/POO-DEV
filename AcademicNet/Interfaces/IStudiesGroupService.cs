@@ -15,6 +15,6 @@ namespace AcademicNet.Interfaces
         public Task<IEnumerable<PostageDTO>> LoadPostages_byStudiesGroup(int? studentId, int? studiesGroupId, int? page);
         public Task<IEnumerable<PostageDTO>> LoadReplies_byPostage(int ? postageId, int? page);
         public Task<PostageDTO> CreatePostage(int studentId, int studiesGroupId, string textBody, string? pathToPhoto, int? parentPostageId );
-
+        public Task<StudentStudiesGroupModel> EnterStudiesGroup(int? studentId, int? studiesGroupId);
     }
 }

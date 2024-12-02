@@ -25,7 +25,12 @@ namespace AcademicNet.Repositories
 
         public async Task<StudiesGroupModel> GetStudiesGroupById(int id)
         {
-            return await _context.StudiesGroups.FindAsync(id);
+            var studiesGroup = await _context.StudiesGroups.FindAsync(id);
+            if (studiesGroup == null)
+            {
+                throw new KeyNotFoundException($"Liga de estudos com id {id} nao encontrada.");
+            }
+            return studiesGroup;
         }
 
         public async Task<IActionResult> CreateStudiesGroup(StudiesGroupModel studiesGroup)
@@ -165,6 +170,18 @@ namespace AcademicNet.Repositories
 
             return postageDTO;
 
+        }
+    
+        public async Task<StudentStudiesGroupModel> EnterStudiesGroup(int studentId, int studiesGroupId)
+        {
+            var studentStudiesGroup = new StudentStudiesGroupModel
+            {
+                StudentId = studentId,
+                StudiesGroupId = studiesGroupId
+            };
+            _context.StudentStudiesGroups.Add(studentStudiesGroup);
+            await _context.SaveChangesAsync();
+            return studentStudiesGroup;
         }
     }
 }

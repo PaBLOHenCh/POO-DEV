@@ -113,5 +113,20 @@ namespace AcademicNet.Services
             }
             
         }
+
+        public async Task<StudentStudiesGroupModel> EnterStudiesGroup(int? studentId, int? studiesGroupId)
+        {
+            if(studentId == null || studiesGroupId == null)
+            {
+                throw new ArgumentException("Os Id's do estudante e da liga de estudos devem ser informados.");
+            }
+            //esperando que o estudante e a liga de estudos existam, se não lança exception
+            await _studiesGroupRepository.GetStudiesGroupById(studiesGroupId.Value);
+            await _studentRepository.GetStudentById(studentId.Value);
+
+
+            return await _studiesGroupRepository.EnterStudiesGroup(studentId.Value, studiesGroupId.Value);
+        }
+    
     }
 }

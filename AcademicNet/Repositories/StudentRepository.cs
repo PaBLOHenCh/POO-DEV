@@ -34,7 +34,7 @@ namespace AcademicNet.Repositories
 
             if (student == null)
             {
-                return null;
+                throw new KeyNotFoundException ($"Estudante com id {id} nao encontrado.");
             }
 
             return student;

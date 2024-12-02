@@ -77,5 +77,25 @@ namespace AcademicNet.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpPost("enterStudiesGroup")]
+        public async Task<ActionResult> EnterStudiesGroup([FromQuery]int studentId, [FromQuery]int studiesGroupId)
+        {
+            try
+            {
+                await _studiesGroupService.EnterStudiesGroup(studentId, studiesGroupId);
+                return Ok();
+            }
+            catch (ArgumentException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (KeyNotFoundException e)
+            {
+                return NotFound(e.Message);
+            }
+        }
+
+
     }
 }
