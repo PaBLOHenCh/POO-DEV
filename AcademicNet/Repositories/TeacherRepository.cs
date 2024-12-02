@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AcademicNet.Data;
+using AcademicNet.DTO;
 using AcademicNet.Interfaces;
 using AcademicNet.Models;
 using Microsoft.EntityFrameworkCore;
@@ -72,6 +73,26 @@ namespace AcademicNet.Repositories
             await _studentRepository.UpdateAVGGradeFrequencyByStudentId(matriculation.StudentId);
             
             return matriculation;
+        }
+
+        public async Task<SubjectDTO> GaveSubject (int teacherId, int subjectId, int classId)
+        {
+            var classSubject = await _context.ClassSubjects
+            .Include(cs => cs.Subject)
+            .FirstAsync(cs => cs.ClassId == classId && cs.SubjectId == subjectId);
+            if(classSubject == null)
+            {
+                throw new KeyNotFoundException("A grade da classe informada não contem essa disciplina.");
+            }
+
+            classSubject.TeacherId = teacherId;
+            await _context.SaveChangesAsync();
+            return new SubjectDTO{
+                Name = classSubject.Subject.Name,
+                Description = classSubject.Subject.Description,
+                Serie = classSubject.Subject.Grade
+            };
+
         }
 
     }

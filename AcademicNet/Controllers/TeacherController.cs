@@ -19,11 +19,6 @@ namespace AcademicNet.Controllers
             _teacherService = teacherService;
         }
 
-/*         public async Task<IActionResult> ThrowGrade([FromQuery]int teacherId)
-        {
-            var ClassSubjects = await GetClassSubject_byTeacherId(teacherId);
-            var StudentsSubjects = await _teacherService.GetStudentsSubjects();
-        } */
 
         [HttpGet("getClassSubject_byTeacherId")]
         public async Task<ActionResult<IEnumerable<ClassSubjectModel>>> GetClassSubject_byTeacherId(int? id)
@@ -64,6 +59,24 @@ namespace AcademicNet.Controllers
             try
             {
                 await _teacherService.ThrowGrade(studentId, subjectId, grade, frequency);
+                return Ok();
+            }
+            catch (ArgumentException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (KeyNotFoundException e)
+            {
+                return NotFound(e.Message);
+            }
+        }
+
+        [HttpPost("GaveSubject")]
+        public async Task<ActionResult> GaveSubject([FromQuery]int? teacherId, [FromQuery]int? subjectId, [FromQuery]int? classId)
+        {
+            try
+            {
+                await _teacherService.GaveSubject(teacherId, subjectId, classId);
                 return Ok();
             }
             catch (ArgumentException e)

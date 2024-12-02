@@ -13,7 +13,8 @@ namespace AcademicNet.DTO
         public string Password { get; set; }
         public string Phone { get; set; }
         public string CPF { get; set; }
+        public int ClassId { get; set; }
         public AddressDTO Address { get; set; }
-        public IdentityRole Role { get; set; }
+        public IdentityRole? Role { get ; set; } = IdentityRole.Student; 
     }
 }

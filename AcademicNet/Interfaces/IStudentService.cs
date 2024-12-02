@@ -18,6 +18,7 @@ namespace AcademicNet.Interfaces
         public Task<IEnumerable<RankingDTO>> GetRanking_per_Class(int? unitId, int? classId, int? subjectId);
 
         public Task<IEnumerable<RankingDTO>> GetRanking_perUnit(int? subjectId);
+        public Task<MatriculationDTO> Matriculation(int? studentId, int? subjectId, int? classId);
 
     }
 }

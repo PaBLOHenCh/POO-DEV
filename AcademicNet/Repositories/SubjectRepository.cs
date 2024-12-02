@@ -6,6 +6,7 @@ using AcademicNet.Data;
 using AcademicNet.Interfaces;
 using AcademicNet.DTO;
 using AcademicNet.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace AcademicNet.Repositories
 {
@@ -65,5 +66,16 @@ namespace AcademicNet.Repositories
             };
         }
     
+        public async Task<bool> IsSubjectOnGradeClass(int subjectId, int classId)
+        {
+            var classSubject = await _context.ClassSubjects
+            .FindAsync(classId, subjectId);
+
+            if (classSubject == null)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

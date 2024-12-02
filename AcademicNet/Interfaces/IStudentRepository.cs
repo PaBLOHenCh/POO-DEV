@@ -33,7 +33,7 @@ namespace AcademicNet.Interfaces
 
         public Task<StudentModel> UpdateAVGGradeFrequencyByStudentId(int id);
 
-
+        public Task<MatriculationDTO> Matriculation(int studentId, int subjectId, int classId);
         
     }
 }

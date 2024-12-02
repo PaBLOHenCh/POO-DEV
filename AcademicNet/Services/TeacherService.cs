@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AcademicNet.DTO;
 using AcademicNet.Interfaces;
 using AcademicNet.Models;
 
@@ -44,5 +45,15 @@ namespace AcademicNet.Services
 
             return await _teacherRepository.ThrowGrade(studentId.Value, subjectId.Value, grade.Value, frequency.Value);
         }
+        
+        public async Task<SubjectDTO> GaveSubject(int? teacherId, int? subjectId, int? classId)
+        {
+            if (teacherId == null || subjectId == null || classId == null)
+            {
+                throw new ArgumentNullException("Todos os Id's devem ser informados.");
+            }
+            return await _teacherRepository.GaveSubject(teacherId.Value, subjectId.Value, classId.Value);
+        }
+    
     }
 }

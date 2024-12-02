@@ -273,6 +273,44 @@ namespace AcademicNet.Repositories
             await _context.SaveChangesAsync();
             return student;
         }
-    
+
+        public async Task<MatriculationDTO> Matriculation(int studentId, int subjectId, int classId)
+        {
+            var student = await _context.Students
+            .Include(s => s.Class)
+            .FirstAsync(s => s.Id == studentId);
+            if (student == null)
+            {
+                throw new KeyNotFoundException($"Estudante com id {studentId} nao encontrado.");
+            }
+            var subject = await _context.Subjects.FindAsync(subjectId);
+            if (subject == null)
+            {
+                throw new KeyNotFoundException($"Disciplina com id {subjectId} nao encontrada.");
+            }
+
+            var studentSubject = new StudentSubjectModel
+            {
+                StudentId = studentId,
+                SubjectId = subjectId,
+                ClassSubjectClassId = classId,
+                ClassSubjectSubjectId = subjectId,
+                Grade = 0,
+                Frequency = 0,
+            };
+
+            var matriculation = new MatriculationDTO
+            {
+                Name = student.Name,
+                SubjectName = subject.Name,
+                ClassName = student.Class.Name
+            };
+
+            studentSubject.CalculateAverageGradeFrequency();
+            _context.Matriculations.Add(studentSubject);
+            await _context.SaveChangesAsync();
+            return matriculation;
+        }
+
     }
 }

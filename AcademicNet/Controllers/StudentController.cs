@@ -35,7 +35,7 @@ namespace AcademicNet.Controllers
                 try
                 {
                     StudentModel newStudent = await _studentService.AddStudent(student);
-                    return Ok();//CreatedAtAction(nameof(GetStudentById), new { id = newStudent.Id });
+                    return Ok();
                 }
                 catch (ArgumentException e)
                 {
@@ -129,7 +129,22 @@ namespace AcademicNet.Controllers
             }
         }
     
-    
+        [HttpPost("matriculation")]
+        public async Task<ActionResult<MatriculationDTO>> Matriculation ([FromQuery]int? studentId, [FromQuery]int? subjectId, [FromQuery]int? classId)
+        {
+            try
+            {
+                return Ok(await _studentService.Matriculation(studentId, subjectId, classId));
+            }
+            catch (ArgumentException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (KeyNotFoundException e)
+            {
+                return NotFound(e.Message);
+            }
+        }
     
     }
 }

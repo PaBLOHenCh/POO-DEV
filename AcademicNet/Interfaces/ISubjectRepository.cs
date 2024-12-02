@@ -11,5 +11,6 @@ namespace AcademicNet.Interfaces
         public Task<SubjectDTO> AddSubject(SubjectDTO new_subject);
         public Task<SubjectDTO> GetSubjectById(int id);
         public Task<SubjectDTO> DeleteSubjectById(int id);
+        public Task<bool> IsSubjectOnGradeClass(int subjectId, int classId);
     }
 }

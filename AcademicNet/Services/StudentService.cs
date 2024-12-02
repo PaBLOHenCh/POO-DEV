@@ -5,16 +5,19 @@ using System.Threading.Tasks;
 using AcademicNet.Interfaces;
 using AcademicNet.DTO;
 using AcademicNet.Models;
+using System.Data.Common;
 
 namespace AcademicNet.Services
 {
     public class StudentService : IStudentService
     {
         private readonly IStudentRepository _studentRepository;
+        private readonly ISubjectRepository _subjectRepository;
 
-        public StudentService(IStudentRepository studentRepository)
+        public StudentService(IStudentRepository studentRepository, ISubjectRepository subjectRepository)
         {
             _studentRepository = studentRepository;
+            _subjectRepository = subjectRepository;
         }
 
         public async Task<StudentModel> AddStudent(StudentCreateDTO student)
@@ -38,7 +41,7 @@ namespace AcademicNet.Services
                 }, 
                 Phone = student.Phone, 
                 CPF = student.CPF, 
-                Role = IdentityRole.Student,
+                ClassId = student.ClassId
                 };
 
             return  await _studentRepository.AddStudent(newStudent);
@@ -194,5 +197,24 @@ namespace AcademicNet.Services
             }
         }
 
+        public async Task<MatriculationDTO> Matriculation(int? studentId, int? subjectId, int? classId)
+        {
+            if (studentId == null || subjectId == null || classId == null)
+            {
+                throw new ArgumentNullException("Os Id's do estudante, da disciplina e da classe devem ser informados");
+            }
+            if (await _subjectRepository.IsSubjectOnGradeClass(subjectId.Value, classId.Value) == false)
+            {
+                throw new ArgumentException("O aluno so pode se matricular em disciplinas que estejam na grade de sua classe.");
+            }
+            var matriculation = await _studentRepository.Matriculation(studentId.Value, subjectId.Value, classId.Value);
+
+            if (matriculation == null)
+            {
+                throw new Exception("Não foi possível realizar a matricula.");
+            }
+            
+            return matriculation;
+        }
     }
 }
