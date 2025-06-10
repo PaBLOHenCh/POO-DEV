@@ -39,7 +39,7 @@ namespace AcademicNet.Repositories
             await _context.SaveChangesAsync();
             return Ok();
         }
-        
+                
         public async Task<IActionResult> AddStudentToStudiesGroup(StudentModel? student, StudiesGroupModel? studiesGroup)
         {
             _context.StudentStudiesGroups.Add(new StudentStudiesGroupModel

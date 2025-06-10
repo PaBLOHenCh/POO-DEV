@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademicNet", "AcademicNet\AcademicNet.csproj", "{0D26D685-589C-44EF-8A5B-DE01A0F4ECA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcademicNet.Tests", "AcademicNet.Tests\AcademicNet.Tests.csproj", "{943F626A-E3B4-4610-872B-4F4D158B6F6C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0D26D685-589C-44EF-8A5B-DE01A0F4ECA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D26D685-589C-44EF-8A5B-DE01A0F4ECA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D26D685-589C-44EF-8A5B-DE01A0F4ECA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D26D685-589C-44EF-8A5B-DE01A0F4ECA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{943F626A-E3B4-4610-872B-4F4D158B6F6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{943F626A-E3B4-4610-872B-4F4D158B6F6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{943F626A-E3B4-4610-872B-4F4D158B6F6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{943F626A-E3B4-4610-872B-4F4D158B6F6C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
