@@ -75,7 +75,7 @@ namespace AcademicNet.Controllers
 
 
         [HttpGet("ranking")]
-        public async Task<ActionResult<IEnumerable<RankingDTO>>> GetRanking_perStudent([FromBody] int? unitId, [FromBody] int? classId, [FromBody] int? subjectId)
+        public async Task<ActionResult<IEnumerable<RankingDTO>>> GetRanking_perStudent([FromQuery] int? unitId, [FromQuery] int? classId, [FromQuery] int? subjectId)
         {
             try
             {
@@ -90,7 +90,7 @@ namespace AcademicNet.Controllers
 
 
         [HttpGet("rankingClasses")]
-        public async Task<ActionResult<IEnumerable<RankingDTO>>> GetRanking_perUnit_Class([FromBody] int? unitId, [FromBody] int? subjectId)
+        public async Task<ActionResult<IEnumerable<RankingDTO>>> GetRanking_perUnit_Class([FromQuery] int? unitId, [FromQuery] int? subjectId)
         {
             try
             {
@@ -103,7 +103,7 @@ namespace AcademicNet.Controllers
         }
 
         [HttpGet("rankingUnits")]
-        public async Task<ActionResult<IEnumerable<RankingDTO>>> GetRanking_perUnit([FromBody] int? subjectId)
+        public async Task<ActionResult<IEnumerable<RankingDTO>>> GetRanking_perUnit([FromQuery] int? subjectId)
         {
             try
             {
@@ -116,7 +116,7 @@ namespace AcademicNet.Controllers
         }
 
         [HttpPost("createStudiesGroup")]
-        public async Task<IActionResult> CreateStudiesGroup([FromBody]int studentId, [FromBody] string name, [FromBody] string description)
+        public async Task<IActionResult> CreateStudiesGroup([FromQuery]int studentId, [FromQuery] string name, [FromQuery] string description)
         {
             try
             {
@@ -130,7 +130,7 @@ namespace AcademicNet.Controllers
         }
     
         [HttpPost("matriculation")]
-        public async Task<ActionResult<MatriculationDTO>> Matriculation ([FromBody]int? studentId, [FromBody]int? subjectId, [FromBody]int? classId)
+        public async Task<ActionResult<MatriculationDTO>> Matriculation ([FromQuery]int? studentId, [FromQuery]int? subjectId, [FromQuery]int? classId)
         {
             try
             {

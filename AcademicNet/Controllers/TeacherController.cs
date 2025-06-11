@@ -54,7 +54,7 @@ namespace AcademicNet.Controllers
         }
 
         [HttpPost("ThrowGrade")]
-        public async Task<ActionResult> ThrowGrade([FromBody]int? studentId, [FromBody]int? subjectId, [FromBody]float? grade, [FromBody]float? frequency)
+        public async Task<ActionResult> ThrowGrade([FromQuery]int? studentId, [FromQuery]int? subjectId, [FromQuery]float? grade, [FromQuery]float? frequency)
         {
             try
             {
@@ -72,7 +72,7 @@ namespace AcademicNet.Controllers
         }
 
         [HttpPost("GaveSubject")]
-        public async Task<ActionResult> GaveSubject([FromBody]int? teacherId, [FromBody]int? subjectId, [FromBody]int? classId)
+        public async Task<ActionResult> GaveSubject([FromQuery]int? teacherId, [FromQuery]int? subjectId, [FromQuery]int? classId)
         {
             try
             {
