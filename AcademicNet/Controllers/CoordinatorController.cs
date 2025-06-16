@@ -23,7 +23,7 @@ namespace AcademicNet.Controllers
         }
 
         [HttpPost("createClass")]
-        public async Task<ActionResult<ClassDTO>> CreateClass([FromQuery]ClassDTO new_class, [FromQuery]int? coordinatorId, [FromQuery]int? teacherId)
+        public async Task<ActionResult<ClassDTO>> CreateClass([FromBody]ClassDTO new_class, [FromQuery]int? coordinatorId, [FromQuery]int? teacherId)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace AcademicNet.Controllers
         }
 
         [HttpPost("addSubject")]
-        public async Task<ActionResult<SubjectDTO>> AddSubject([FromQuery]SubjectDTO new_subject)
+        public async Task<ActionResult<SubjectDTO>> AddSubject([FromBody]SubjectDTO new_subject)
         {
             try
             {

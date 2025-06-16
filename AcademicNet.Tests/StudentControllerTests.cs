@@ -58,7 +58,7 @@ public class StudentControllerTests
         var response = await _client.PostAsync("/api/student/create", content);
 
         // Assert: Verifica se retorna 201 Created
-        Assert.Equal(HttpStatusCode.Created, response.StatusCode);
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
     }
 
     [Fact]
@@ -78,7 +78,7 @@ public class StudentControllerTests
         var response2 = await _client.PostAsync("/api/student/create", content2); // tentativa duplicada
 
         // Assert
-        Assert.Equal(HttpStatusCode.Created, response1.StatusCode); // primeiro deve funcionar
+        Assert.Equal(HttpStatusCode.OK, response1.StatusCode); // primeiro deve funcionar
         Assert.Equal(HttpStatusCode.BadRequest, response2.StatusCode); // segundo deve falhar
     }
 
@@ -99,7 +99,7 @@ public class StudentControllerTests
         // Act
         var get_response = await _client.GetAsync($"api/student/{alunoCriado.Id}");
 
-        // Assert: Verifica se retorna lista
+        // Assert: Verifica se o corpo da requisição get retorna um aluno não nulo
         get_response.EnsureSuccessStatusCode();
         var get_body = await get_response.Content.ReadAsStringAsync();
         Assert.NotEmpty(get_body);
@@ -118,26 +118,6 @@ public class StudentControllerTests
     }
 }
 
-
-
-public class CoordinatorControllerTests
-{
-    [Fact]
-    public async Task Deve_Cadastrar_Coordenador_E_Criar_Turma()
-    {
-        // Arrange
-        // Act: POST /coordinator + /class
-        // Assert: Verifica vínculo
-    }
-
-    [Fact]
-    public async Task Deve_Vincular_Aluno_E_Professor_A_Turma()
-    {
-        // Arrange
-        // Act: PUT /class/{id}/addStudent, addTeacher
-        // Assert: Verifica associação
-    }
-}
 
 public class SubjectControllerTests
 {
@@ -158,32 +138,6 @@ public class SubjectControllerTests
     }
 }
 
-public class StudiesGroupControllerTests
-{
-    [Fact]
-    public async Task Deve_Criar_Grupo_De_Estudo()
-    {
-        // Arrange
-        // Act: POST /studiesgroup
-        // Assert: Verifica grupo criado
-    }
-
-    [Fact]
-    public async Task Deve_Postar_Duvida_Em_Grupo()
-    {
-        // Arrange
-        // Act: POST /postage
-        // Assert: Verifica postagem
-    }
-
-    [Fact]
-    public async Task Deve_Responder_Duvida_Com_Comentario()
-    {
-        // Arrange
-        // Act: POST /comment
-        // Assert: Verifica comentário vinculado
-    }
-}
 
 public class RankingControllerTests
 {

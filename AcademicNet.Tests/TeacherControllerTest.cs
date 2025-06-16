@@ -13,9 +13,9 @@ public class TeacherControllerTests
 
     private readonly HttpClient _client;
 
-    public TeacherControllerTests()
+    public TeacherControllerTests(CustomWebApplicationFactory factory)
     {
-        _client = new CustomWebApplicationFactory().CreateClient();
+        _client = factory.CreateClient();
     }
     [Fact]
     public async Task Deve_Retornar_404_Se_Professor_Nao_Existe()
@@ -47,19 +47,15 @@ public class TeacherControllerTests
     public async Task Deve_Retornar_400_Se_Nota_For_Invalida()
     {
         // Arrange
-        var requestBody = new
-        {
-            studentId = 1,
-            subjectId = 2,
-            grade = -5.0f, // Nota inválida
-            frequency = 80.0f
-        };
+        var url = "/api/teacher/ThrowGrade?" +
+          $"studentId={1}" +
+          $"&subjectId={2}" +
+          $"&grade={-5.0f}" +
+          $"&frequency={0.8f}";
 
-        var json = JsonSerializer.Serialize(requestBody);
-        var content = new StringContent(json, Encoding.UTF8, "application/json");
-
+        
         // Act
-        var response = await _client.PostAsync("/api/teacher/ThrowGrade", content);
+        var response = await _client.PostAsync(url, null);
 
         // Assert
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
