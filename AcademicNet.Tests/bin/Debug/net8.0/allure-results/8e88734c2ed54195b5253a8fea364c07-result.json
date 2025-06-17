@@ -1,0 +1,52 @@
+{
+  "uuid": "83611945-bf54-4245-8fdf-9b2b204d7cd0",
+  "historyId": "65c13844c5e8ad9a92842431419c62de",
+  "testCaseId": "bd128890dbed9da2447911175ae1b0cf",
+  "fullName": "AcademicNet.Tests:TeacherControllerTests.Deve_Retornar_400_Se_Nota_For_Invalida()",
+  "labels": [
+    {
+      "name": "thread",
+      "value": ".NET Long Running Task"
+    },
+    {
+      "name": "host",
+      "value": "DESKTOP-RI3P2DJ"
+    },
+    {
+      "name": "language",
+      "value": "C#"
+    },
+    {
+      "name": "framework",
+      "value": "xUnit.net"
+    },
+    {
+      "name": "testClass",
+      "value": "TeacherControllerTests"
+    },
+    {
+      "name": "testMethod",
+      "value": "TeacherControllerTests.Deve_Retornar_400_Se_Nota_For_Invalida"
+    },
+    {
+      "name": "package",
+      "value": "TeacherControllerTests"
+    }
+  ],
+  "links": [],
+  "name": "TeacherControllerTests.Deve_Retornar_400_Se_Nota_For_Invalida",
+  "status": "failed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "Assert.Equal() Failure\r\nExpected: BadRequest\r\nActual:   NotFound",
+    "trace": "   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer`1 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 96\r\n   at Xunit.Assert.Equal[T](T expected, T actual) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 63\r\n   at TeacherControllerTests.Deve_Retornar_400_Se_Nota_For_Invalida() in C:\\Users\\pablo\\OneDrive\\Área de Trabalho\\POO-DEV\\AcademicNetAPI\\AcademicNet.Tests\\TeacherControllerTest.cs:line 61\r\n   at Xunit.Sdk.TestInvoker`1.<>c__DisplayClass48_0.<<InvokeTestMethodAsync>b__1>d.MoveNext() in /_/src/xunit.execution/Sdk/Frameworks/Runners/TestInvoker.cs:line 264\r\n--- End of stack trace from previous location ---\r\n   at Xunit.Sdk.ExecutionTimer.AggregateAsync(Func`1 asyncAction) in /_/src/xunit.execution/Sdk/Frameworks/ExecutionTimer.cs:line 48\r\n   at Xunit.Sdk.ExceptionAggregator.RunAsync(Func`1 code) in /_/src/xunit.core/Sdk/ExceptionAggregator.cs:line 90"
+  },
+  "stage": "finished",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "start": 1750199201347,
+  "stop": 1750199201791
+}

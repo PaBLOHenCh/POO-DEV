@@ -1,0 +1,12 @@
+{
+  "uuid": "9b83372f-e4d5-4c81-9f2a-eaec0de8d408",
+  "name": "StudiesGroupControllerTests",
+  "children": [
+    "6edbf076-1042-47eb-995f-0389ae4f32e9"
+  ],
+  "befores": [],
+  "afters": [],
+  "links": [],
+  "start": 1750199175539,
+  "stop": 1750199175652
+}

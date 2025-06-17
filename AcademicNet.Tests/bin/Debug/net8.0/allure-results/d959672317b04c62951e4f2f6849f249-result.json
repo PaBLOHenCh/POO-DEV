@@ -1,0 +1,52 @@
+{
+  "uuid": "8d459988-4c07-4b0b-adbf-cb025f439772",
+  "historyId": "e5b6e2e20a4f3f8df3a83d63813e4329",
+  "testCaseId": "4b8bba655ade915e00a48c658d41b90a",
+  "fullName": "AcademicNet.Tests:StudentControllerTests.Deve_Retornar_Aluno_Por_Id()",
+  "labels": [
+    {
+      "name": "thread",
+      "value": ".NET Long Running Task"
+    },
+    {
+      "name": "host",
+      "value": "DESKTOP-RI3P2DJ"
+    },
+    {
+      "name": "language",
+      "value": "C#"
+    },
+    {
+      "name": "framework",
+      "value": "xUnit.net"
+    },
+    {
+      "name": "testClass",
+      "value": "StudentControllerTests"
+    },
+    {
+      "name": "testMethod",
+      "value": "StudentControllerTests.Deve_Retornar_Aluno_Por_Id"
+    },
+    {
+      "name": "package",
+      "value": "StudentControllerTests"
+    }
+  ],
+  "links": [],
+  "name": "StudentControllerTests.Deve_Retornar_Aluno_Por_Id",
+  "status": "broken",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "The input does not contain any JSON tokens. Expected the input to start with a valid JSON token, when isFinalBlock is true. Path: $ | LineNumber: 0 | BytePositionInLine: 0.\nThe input does not contain any JSON tokens. Expected the input to start with a valid JSON token, when isFinalBlock is true. LineNumber: 0 | BytePositionInLine: 0.",
+    "trace": "   at System.Text.Json.ThrowHelper.ReThrowWithPath(ReadStack& state, JsonReaderException ex)\r\n   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)\r\n   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.Deserialize(Utf8JsonReader& reader, ReadStack& state)\r\n   at System.Text.Json.JsonSerializer.ReadFromSpan[TValue](ReadOnlySpan`1 utf8Json, JsonTypeInfo`1 jsonTypeInfo, Nullable`1 actualByteCount)\r\n   at System.Text.Json.JsonSerializer.ReadFromSpan[TValue](ReadOnlySpan`1 json, JsonTypeInfo`1 jsonTypeInfo)\r\n   at System.Text.Json.JsonSerializer.Deserialize[TValue](String json, JsonSerializerOptions options)\r\n   at StudentControllerTests.Deve_Retornar_Aluno_Por_Id() in C:\\Users\\pablo\\OneDrive\\Área de Trabalho\\POO-DEV\\AcademicNetAPI\\AcademicNet.Tests\\StudentControllerTests.cs:line 105\r\n   at Xunit.Sdk.TestInvoker`1.<>c__DisplayClass48_0.<<InvokeTestMethodAsync>b__1>d.MoveNext() in /_/src/xunit.execution/Sdk/Frameworks/Runners/TestInvoker.cs:line 264\r\n--- End of stack trace from previous location ---\r\n   at Xunit.Sdk.ExecutionTimer.AggregateAsync(Func`1 asyncAction) in /_/src/xunit.execution/Sdk/Frameworks/ExecutionTimer.cs:line 48\r\n   at Xunit.Sdk.ExceptionAggregator.RunAsync(Func`1 code) in /_/src/xunit.core/Sdk/ExceptionAggregator.cs:line 90\n   at System.Text.Json.ThrowHelper.ThrowJsonReaderException(Utf8JsonReader& json, ExceptionResource resource, Byte nextByte, ReadOnlySpan`1 bytes)\r\n   at System.Text.Json.Utf8JsonReader.Read()\r\n   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)"
+  },
+  "stage": "finished",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "start": 1750198891118,
+  "stop": 1750198891170
+}

@@ -1,0 +1,52 @@
+{
+  "uuid": "c58adb7c-0b19-4380-8bf3-ccdbd96c8270",
+  "historyId": "96342a648c65077f2eacfb53ccf44717",
+  "testCaseId": "e79f4721376cdd94027e04a22952183d",
+  "fullName": "AcademicNet.Tests:StudiesGroupControllerTests.Performance_LoadPostages_50_Paginas()",
+  "labels": [
+    {
+      "name": "thread",
+      "value": ".NET Long Running Task"
+    },
+    {
+      "name": "host",
+      "value": "DESKTOP-RI3P2DJ"
+    },
+    {
+      "name": "language",
+      "value": "C#"
+    },
+    {
+      "name": "framework",
+      "value": "xUnit.net"
+    },
+    {
+      "name": "testClass",
+      "value": "StudiesGroupControllerTests"
+    },
+    {
+      "name": "testMethod",
+      "value": "StudiesGroupControllerTests.Performance_LoadPostages_50_Paginas"
+    },
+    {
+      "name": "package",
+      "value": "StudiesGroupControllerTests"
+    }
+  ],
+  "links": [],
+  "name": "StudiesGroupControllerTests.Performance_LoadPostages_50_Paginas",
+  "status": "failed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "Assert.Equal() Failure\r\nExpected: OK\r\nActual:   NotFound",
+    "trace": "   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer`1 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 96\r\n   at Xunit.Assert.Equal[T](T expected, T actual) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 63\r\n   at StudiesGroupControllerTests.Performance_LoadPostages_50_Paginas() in C:\\Users\\pablo\\OneDrive\\Área de Trabalho\\POO-DEV\\AcademicNetAPI\\AcademicNet.Tests\\StudiesGroupControllerTests.cs:line 106\r\n   at Xunit.Sdk.TestInvoker`1.<>c__DisplayClass48_0.<<InvokeTestMethodAsync>b__1>d.MoveNext() in /_/src/xunit.execution/Sdk/Frameworks/Runners/TestInvoker.cs:line 264\r\n--- End of stack trace from previous location ---\r\n   at Xunit.Sdk.ExecutionTimer.AggregateAsync(Func`1 asyncAction) in /_/src/xunit.execution/Sdk/Frameworks/ExecutionTimer.cs:line 48\r\n   at Xunit.Sdk.ExceptionAggregator.RunAsync(Func`1 code) in /_/src/xunit.core/Sdk/ExceptionAggregator.cs:line 90"
+  },
+  "stage": "finished",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "start": 1750199174979,
+  "stop": 1750199175534
+}

@@ -1,0 +1,51 @@
+{
+  "uuid": "d63988e9-ae6e-4ae1-868f-484671051aa1",
+  "historyId": "1c31a2b8d809cad6344b2f2cfc99c8c6",
+  "testCaseId": "9cd98ac660a76052a6be4606ec906804",
+  "fullName": "AcademicNet.Tests:TeacherControllerTests.Deve_Retornar_400_Se_Parametros_De_Matriculas_Forem_Nulos()",
+  "labels": [
+    {
+      "name": "thread",
+      "value": ".NET Long Running Task"
+    },
+    {
+      "name": "host",
+      "value": "DESKTOP-RI3P2DJ"
+    },
+    {
+      "name": "language",
+      "value": "C#"
+    },
+    {
+      "name": "framework",
+      "value": "xUnit.net"
+    },
+    {
+      "name": "testClass",
+      "value": "TeacherControllerTests"
+    },
+    {
+      "name": "testMethod",
+      "value": "TeacherControllerTests.Deve_Retornar_400_Se_Parametros_De_Matriculas_Forem_Nulos"
+    },
+    {
+      "name": "package",
+      "value": "TeacherControllerTests"
+    }
+  ],
+  "links": [],
+  "name": "TeacherControllerTests.Deve_Retornar_400_Se_Parametros_De_Matriculas_Forem_Nulos",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": ""
+  },
+  "stage": "finished",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "start": 1750200430007,
+  "stop": 1750200430199
+}

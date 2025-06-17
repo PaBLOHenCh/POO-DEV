@@ -1,0 +1,12 @@
+{
+  "uuid": "d33202cb-ccfa-4714-b444-f0c02137743c",
+  "name": "StudentControllerTests",
+  "children": [
+    "8429f06f-54ce-4814-bfa4-bad761d4c6e6"
+  ],
+  "befores": [],
+  "afters": [],
+  "links": [],
+  "start": 1750200430689,
+  "stop": 1750200430983
+}

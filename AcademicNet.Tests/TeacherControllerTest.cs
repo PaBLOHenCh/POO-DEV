@@ -8,7 +8,7 @@ using System.Text;
 using System.Net;
 using AcademicNet.Models;
 
-public class TeacherControllerTests
+public class TeacherControllerTests : IClassFixture<CustomWebApplicationFactory>
 {
 
     private readonly HttpClient _client;

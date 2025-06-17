@@ -1,0 +1,51 @@
+{
+  "uuid": "9c768006-25de-479d-94bf-f54f22f470ae",
+  "historyId": "c19f21dbfbd5fd588000432656273061",
+  "testCaseId": "def68c334615e05a63d1077a54b9b8cb",
+  "fullName": "AcademicNet.Tests:RankingControllerTests.Deve_Visualizar_Ranking_Por_Disciplina()",
+  "labels": [
+    {
+      "name": "thread",
+      "value": ".NET Long Running Task"
+    },
+    {
+      "name": "host",
+      "value": "DESKTOP-RI3P2DJ"
+    },
+    {
+      "name": "language",
+      "value": "C#"
+    },
+    {
+      "name": "framework",
+      "value": "xUnit.net"
+    },
+    {
+      "name": "testClass",
+      "value": "RankingControllerTests"
+    },
+    {
+      "name": "testMethod",
+      "value": "RankingControllerTests.Deve_Visualizar_Ranking_Por_Disciplina"
+    },
+    {
+      "name": "package",
+      "value": "RankingControllerTests"
+    }
+  ],
+  "links": [],
+  "name": "RankingControllerTests.Deve_Visualizar_Ranking_Por_Disciplina",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": ""
+  },
+  "stage": "finished",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "start": 1750200030796,
+  "stop": 1750200030843
+}

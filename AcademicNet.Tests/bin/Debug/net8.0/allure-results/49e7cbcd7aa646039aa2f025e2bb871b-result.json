@@ -1,0 +1,51 @@
+{
+  "uuid": "fed09f14-8f4d-4fb1-a267-769a5430c31b",
+  "historyId": "86337929430de620d73b2bdab5d62077",
+  "testCaseId": "e56ff4269850ddef33c4f434ca4169db",
+  "fullName": "AcademicNet.Tests:StudentServiceTests.GetRanking_per_Class_Deve_Lancar_ArgumentException_Se_Filtros_Invalidos()",
+  "labels": [
+    {
+      "name": "thread",
+      "value": ".NET Long Running Task"
+    },
+    {
+      "name": "host",
+      "value": "DESKTOP-RI3P2DJ"
+    },
+    {
+      "name": "language",
+      "value": "C#"
+    },
+    {
+      "name": "framework",
+      "value": "xUnit.net"
+    },
+    {
+      "name": "testClass",
+      "value": "StudentServiceTests"
+    },
+    {
+      "name": "testMethod",
+      "value": "StudentServiceTests.GetRanking_per_Class_Deve_Lancar_ArgumentException_Se_Filtros_Invalidos"
+    },
+    {
+      "name": "package",
+      "value": "StudentServiceTests"
+    }
+  ],
+  "links": [],
+  "name": "StudentServiceTests.GetRanking_per_Class_Deve_Lancar_ArgumentException_Se_Filtros_Invalidos",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": ""
+  },
+  "stage": "finished",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "start": 1750199589809,
+  "stop": 1750199589811
+}

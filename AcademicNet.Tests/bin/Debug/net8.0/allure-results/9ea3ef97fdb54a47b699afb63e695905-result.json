@@ -1,0 +1,51 @@
+{
+  "uuid": "bdaf4e41-a117-4d4e-9182-5f101c1dee3e",
+  "historyId": "0e46b415d557b900ff9481cf922c6373",
+  "testCaseId": "fd11318fdfd2e8457d4335b4790b501f",
+  "fullName": "AcademicNet.Tests:StudiesGroupControllerTests.Performance_LoadStudiesGroup_100_Requisicoes()",
+  "labels": [
+    {
+      "name": "thread",
+      "value": ".NET Long Running Task"
+    },
+    {
+      "name": "host",
+      "value": "DESKTOP-RI3P2DJ"
+    },
+    {
+      "name": "language",
+      "value": "C#"
+    },
+    {
+      "name": "framework",
+      "value": "xUnit.net"
+    },
+    {
+      "name": "testClass",
+      "value": "StudiesGroupControllerTests"
+    },
+    {
+      "name": "testMethod",
+      "value": "StudiesGroupControllerTests.Performance_LoadStudiesGroup_100_Requisicoes"
+    },
+    {
+      "name": "package",
+      "value": "StudiesGroupControllerTests"
+    }
+  ],
+  "links": [],
+  "name": "StudiesGroupControllerTests.Performance_LoadStudiesGroup_100_Requisicoes",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": ""
+  },
+  "stage": "finished",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "start": 1750199589882,
+  "stop": 1750199590138
+}

@@ -7,8 +7,13 @@ using System.Text.Json;
 using System.Text;
 using System.Net;
 using AcademicNet.Models;
+using Allure.Xunit.Attributes;
+using Allure.Net.Commons;
 
-public class StudentControllerTests
+[AllureSuite("Student Controller")]
+[AllureOwner("Pablo")]
+[AllureEpic("AcademicNet API")]
+public class StudentControllerTests : IClassFixture<CustomWebApplicationFactory>
 {
     private readonly HttpClient _client;
 
@@ -42,13 +47,16 @@ public class StudentControllerTests
 
         return student;
     }
+
+    [AllureFeature("Create Student")]
+    [AllureSeverity(SeverityLevel.normal)]
     [Fact]
     public async Task Deve_Cadastrar_Aluno_Com_Dados_Validos()
     {
         // Arrange
         // Simula StudentCreateDTO com dados válidos
         // Teste para inserção de endereço correto
-        
+
         var studentCreateDto = FictionalStudent();
 
         var json = JsonSerializer.Serialize(studentCreateDto);

@@ -280,7 +280,6 @@ C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet.Tes
 C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet.Tests\bin\Debug\net8.0\refs\System.Text.Encoding.dll
 C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet.Tests\bin\Debug\net8.0\refs\System.Text.Encoding.Extensions.dll
 C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet.Tests\bin\Debug\net8.0\refs\System.Text.Encodings.Web.dll
-C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet.Tests\bin\Debug\net8.0\refs\System.Text.Json.dll
 C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet.Tests\bin\Debug\net8.0\refs\System.Text.RegularExpressions.dll
 C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet.Tests\bin\Debug\net8.0\refs\System.Threading.Channels.dll
 C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet.Tests\bin\Debug\net8.0\refs\System.Threading.dll
@@ -423,3 +422,10 @@ C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet.Tes
 C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet.Tests\obj\Debug\net8.0\AcademicNet.Tests.pdb
 C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet.Tests\obj\Debug\net8.0\AcademicNet.Tests.genruntimeconfig.cache
 C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet.Tests\obj\Debug\net8.0\ref\AcademicNet.Tests.dll
+C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet.Tests\bin\Debug\net8.0\Allure.Net.Commons.dll
+C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet.Tests\bin\Debug\net8.0\Allure.Xunit.reporters.dll
+C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet.Tests\bin\Debug\net8.0\AspectInjector.Broker.dll
+C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet.Tests\bin\Debug\net8.0\0Harmony.dll
+C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet.Tests\bin\Debug\net8.0\MimeTypesMap.dll
+C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet.Tests\bin\Debug\net8.0\System.Text.Json.dll
+C:\Users\pablo\OneDrive\Área de Trabalho\POO-DEV\AcademicNetAPI\AcademicNet.Tests\bin\Debug\net8.0\allureConfig.json

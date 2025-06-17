@@ -1,0 +1,52 @@
+{
+  "uuid": "60fac5df-03f6-44bd-9a64-0e7847263b5a",
+  "historyId": "654ad6118fb1d4c521a4ee86624418eb",
+  "testCaseId": "cf250b0821093aeb021c626ad982422b",
+  "fullName": "AcademicNet.Tests:StudentControllerTests.Nao_Deve_Cadastrar_Aluno_Com_CPF_Duplicado()",
+  "labels": [
+    {
+      "name": "thread",
+      "value": ".NET Long Running Task"
+    },
+    {
+      "name": "host",
+      "value": "DESKTOP-RI3P2DJ"
+    },
+    {
+      "name": "language",
+      "value": "C#"
+    },
+    {
+      "name": "framework",
+      "value": "xUnit.net"
+    },
+    {
+      "name": "testClass",
+      "value": "StudentControllerTests"
+    },
+    {
+      "name": "testMethod",
+      "value": "StudentControllerTests.Nao_Deve_Cadastrar_Aluno_Com_CPF_Duplicado"
+    },
+    {
+      "name": "package",
+      "value": "StudentControllerTests"
+    }
+  ],
+  "links": [],
+  "name": "StudentControllerTests.Nao_Deve_Cadastrar_Aluno_Com_CPF_Duplicado",
+  "status": "failed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "Assert.Equal() Failure: Values differ\r\nExpected: BadRequest\r\nActual:   OK",
+    "trace": "   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer`1 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 136\r\n   at Xunit.Assert.Equal[T](T expected, T actual) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 81\r\n   at StudentControllerTests.Nao_Deve_Cadastrar_Aluno_Com_CPF_Duplicado() in C:\\Users\\pablo\\OneDrive\\Área de Trabalho\\POO-DEV\\AcademicNetAPI\\AcademicNet.Tests\\StudentControllerTests.cs:line 90\r\n   at Xunit.Sdk.TestInvoker`1.<>c__DisplayClass48_0.<<InvokeTestMethodAsync>b__1>d.MoveNext() in /_/src/xunit.execution/Sdk/Frameworks/Runners/TestInvoker.cs:line 276\r\n--- End of stack trace from previous location ---\r\n   at Xunit.Sdk.ExecutionTimer.AggregateAsync(Func`1 asyncAction) in /_/src/xunit.execution/Sdk/Frameworks/ExecutionTimer.cs:line 48\r\n   at Xunit.Sdk.ExceptionAggregator.RunAsync(Func`1 code) in /_/src/xunit.core/Sdk/ExceptionAggregator.cs:line 90"
+  },
+  "stage": "finished",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "start": 1750199589861,
+  "stop": 1750199590256
+}

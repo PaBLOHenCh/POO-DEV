@@ -1,0 +1,51 @@
+{
+  "uuid": "a671ba08-beb0-4621-8513-c1cc05c2968f",
+  "historyId": "f499cd643189e208cd5a793a61d32a76",
+  "testCaseId": "e129b450e57d39da3823d895669dca36",
+  "fullName": "AcademicNet.Tests:SubjectControllerTests.Deve_Criar_Disciplina_E_Associar_Turma()",
+  "labels": [
+    {
+      "name": "thread",
+      "value": ".NET Long Running Task"
+    },
+    {
+      "name": "host",
+      "value": "DESKTOP-RI3P2DJ"
+    },
+    {
+      "name": "language",
+      "value": "C#"
+    },
+    {
+      "name": "framework",
+      "value": "xUnit.net"
+    },
+    {
+      "name": "testClass",
+      "value": "SubjectControllerTests"
+    },
+    {
+      "name": "testMethod",
+      "value": "SubjectControllerTests.Deve_Criar_Disciplina_E_Associar_Turma"
+    },
+    {
+      "name": "package",
+      "value": "SubjectControllerTests"
+    }
+  ],
+  "links": [],
+  "name": "SubjectControllerTests.Deve_Criar_Disciplina_E_Associar_Turma",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": ""
+  },
+  "stage": "finished",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "start": 1750198889632,
+  "stop": 1750198889654
+}

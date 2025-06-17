@@ -12,7 +12,7 @@ using AcademicNet.Services;
 using AcademicNet.DTO;
 using AcademicNet.Interfaces;
 
-public class StudentServiceTests
+public class StudentServiceTests : IClassFixture<CustomWebApplicationFactory>
 {
     private readonly AcademicNetDbContext _context;
     private readonly StudentService _studentService;
@@ -26,7 +26,27 @@ public class StudentServiceTests
         _context = new AcademicNetDbContext(options);
 
         // Seed básico de dados
-        _context.Students.Add(new StudentModel { Id = 1, Name = "Aluno A" });
+        _context.Students.Add(new StudentModel
+        {
+            Id = 1,
+            Name = "Aluno de Teste",
+            Email = "aluno.teste@example.com",
+            Password = "SenhaForte123",
+            Phone = "11999999999",
+            CPF = "123.456.789-00",
+            Role = IdentityRole.Student,
+            Address = new AddressModel
+            {
+                Logradouro = "Rua das Flores",
+                Numero = "123",
+                Bairro = "Centro",
+                Cidade = "São Paulo",
+                Estado = "SP",
+                CEP = "12345-678",
+                Complemento = "Apto 101",
+                Referencia = "Próximo à praça central"
+            }
+        });
         _context.SaveChanges();
 
         var studentRepository = new StudentRepository(_context);

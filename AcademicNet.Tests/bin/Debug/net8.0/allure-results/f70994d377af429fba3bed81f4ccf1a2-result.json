@@ -1,0 +1,71 @@
+{
+  "uuid": "0ae98c61-a9dc-4d81-9622-0f742cfed66a",
+  "historyId": "559c1772a09135878c5915605e87c8d1",
+  "testCaseId": "693ab26ca45afaa007c9c176edba46f1",
+  "fullName": "AcademicNet.Tests:StudentControllerTests.Deve_Cadastrar_Aluno_Com_Dados_Validos()",
+  "labels": [
+    {
+      "name": "thread",
+      "value": ".NET Long Running Task"
+    },
+    {
+      "name": "host",
+      "value": "DESKTOP-RI3P2DJ"
+    },
+    {
+      "name": "language",
+      "value": "C#"
+    },
+    {
+      "name": "framework",
+      "value": "xUnit.net"
+    },
+    {
+      "name": "testClass",
+      "value": "StudentControllerTests"
+    },
+    {
+      "name": "testMethod",
+      "value": "StudentControllerTests.Deve_Cadastrar_Aluno_Com_Dados_Validos"
+    },
+    {
+      "name": "package",
+      "value": "StudentControllerTests"
+    },
+    {
+      "name": "epic",
+      "value": "AcademicNet API"
+    },
+    {
+      "name": "feature",
+      "value": "Create Student"
+    },
+    {
+      "name": "owner",
+      "value": "Pablo"
+    },
+    {
+      "name": "severity",
+      "value": "normal"
+    },
+    {
+      "name": "suite",
+      "value": "Student Controller"
+    }
+  ],
+  "links": [],
+  "name": "StudentControllerTests.Deve_Cadastrar_Aluno_Com_Dados_Validos",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": ""
+  },
+  "stage": "finished",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "start": 1750198891179,
+  "stop": 1750198891194
+}

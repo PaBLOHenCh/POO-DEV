@@ -1,0 +1,51 @@
+{
+  "uuid": "7086aacb-a6bf-4966-9559-da73c87c1185",
+  "historyId": "17ee2476e81b961c418207a7db01c426",
+  "testCaseId": "6c059b31cbef01248cb33709650d3450",
+  "fullName": "AcademicNet.Tests:RankingControllerTests.Deve_Visualizar_Ranking_Geral_Turma()",
+  "labels": [
+    {
+      "name": "thread",
+      "value": ".NET Long Running Task"
+    },
+    {
+      "name": "host",
+      "value": "DESKTOP-RI3P2DJ"
+    },
+    {
+      "name": "language",
+      "value": "C#"
+    },
+    {
+      "name": "framework",
+      "value": "xUnit.net"
+    },
+    {
+      "name": "testClass",
+      "value": "RankingControllerTests"
+    },
+    {
+      "name": "testMethod",
+      "value": "RankingControllerTests.Deve_Visualizar_Ranking_Geral_Turma"
+    },
+    {
+      "name": "package",
+      "value": "RankingControllerTests"
+    }
+  ],
+  "links": [],
+  "name": "RankingControllerTests.Deve_Visualizar_Ranking_Geral_Turma",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": ""
+  },
+  "stage": "finished",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "start": 1750199588646,
+  "stop": 1750199588649
+}

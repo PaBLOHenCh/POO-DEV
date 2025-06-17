@@ -1,10 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "+VeqCk0oVinJW7wctH1d5WoTdTDH4Hh5j9sK//vBnXvgBIqiuBTAI1w/MlWIkXzD0HSN44TvUqDpNw4uBINYTA==",
+  "dgSpecHash": "FI9dgm2pkSfyOUuqbC1oG+LzM4az126bWg4ycxFJryZ2TvDudsCjJRXU/kEnMs9NSq7YFyeOZ4vu0Xe127nWFw==",
   "success": true,
   "projectFilePath": "C:\\Users\\pablo\\OneDrive\\Área de Trabalho\\POO-DEV\\AcademicNetAPI\\AcademicNet.Tests\\AcademicNet.Tests.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\pablo\\.nuget\\packages\\allure.net.commons\\2.12.1\\allure.net.commons.2.12.1.nupkg.sha512",
+    "C:\\Users\\pablo\\.nuget\\packages\\allure.xunit\\2.12.1\\allure.xunit.2.12.1.nupkg.sha512",
+    "C:\\Users\\pablo\\.nuget\\packages\\aspectinjector\\2.8.1\\aspectinjector.2.8.1.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\coverlet.collector\\6.0.0\\coverlet.collector.6.0.0.nupkg.sha512",
+    "C:\\Users\\pablo\\.nuget\\packages\\lib.harmony\\2.3.3\\lib.harmony.2.3.3.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\microsoft.aspnetcore.mvc.testing\\8.0.5\\microsoft.aspnetcore.mvc.testing.8.0.5.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.0\\microsoft.aspnetcore.openapi.8.0.0.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\microsoft.aspnetcore.testhost\\8.0.5\\microsoft.aspnetcore.testhost.8.0.5.nupkg.sha512",
@@ -52,8 +56,9 @@
     "C:\\Users\\pablo\\.nuget\\packages\\microsoft.testplatform.objectmodel\\17.6.0\\microsoft.testplatform.objectmodel.17.6.0.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\microsoft.testplatform.testhost\\17.6.0\\microsoft.testplatform.testhost.17.6.0.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\pablo\\.nuget\\packages\\mimetypesmap\\1.0.8\\mimetypesmap.1.0.8.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
-    "C:\\Users\\pablo\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\pablo\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\npgsql\\8.0.5\\npgsql.8.0.5.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\8.0.10\\npgsql.entityframeworkcore.postgresql.8.0.10.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\nuget.frameworks\\5.11.0\\nuget.frameworks.5.11.0.nupkg.sha512",
@@ -81,6 +86,7 @@
     "C:\\Users\\pablo\\.nuget\\packages\\system.buffers\\4.3.0\\system.buffers.4.3.0.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
+    "C:\\Users\\pablo\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\system.console\\4.3.0\\system.console.4.3.0.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\system.diagnostics.diagnosticsource\\8.0.0\\system.diagnostics.diagnosticsource.8.0.0.nupkg.sha512",
@@ -116,6 +122,7 @@
     "C:\\Users\\pablo\\.nuget\\packages\\system.runtime.handles\\4.3.0\\system.runtime.handles.4.3.0.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\system.runtime.interopservices\\4.3.0\\system.runtime.interopservices.4.3.0.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\system.runtime.interopservices.runtimeinformation\\4.3.0\\system.runtime.interopservices.runtimeinformation.4.3.0.nupkg.sha512",
+    "C:\\Users\\pablo\\.nuget\\packages\\system.runtime.loader\\4.0.0\\system.runtime.loader.4.0.0.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\system.runtime.numerics\\4.3.0\\system.runtime.numerics.4.3.0.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\system.security.cryptography.algorithms\\4.3.0\\system.security.cryptography.algorithms.4.3.0.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\system.security.cryptography.cng\\4.3.0\\system.security.cryptography.cng.4.3.0.nupkg.sha512",
@@ -127,7 +134,7 @@
     "C:\\Users\\pablo\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\system.text.encoding.extensions\\4.3.0\\system.text.encoding.extensions.4.3.0.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
-    "C:\\Users\\pablo\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512",
+    "C:\\Users\\pablo\\.nuget\\packages\\system.text.json\\8.0.1\\system.text.json.8.0.1.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\system.text.regularexpressions\\4.3.0\\system.text.regularexpressions.4.3.0.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
@@ -135,14 +142,26 @@
     "C:\\Users\\pablo\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\pablo\\.nuget\\packages\\xunit\\2.4.2\\xunit.2.4.2.nupkg.sha512",
+    "C:\\Users\\pablo\\.nuget\\packages\\xunit\\2.5.0\\xunit.2.5.0.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\xunit.abstractions\\2.0.3\\xunit.abstractions.2.0.3.nupkg.sha512",
-    "C:\\Users\\pablo\\.nuget\\packages\\xunit.analyzers\\1.0.0\\xunit.analyzers.1.0.0.nupkg.sha512",
-    "C:\\Users\\pablo\\.nuget\\packages\\xunit.assert\\2.4.2\\xunit.assert.2.4.2.nupkg.sha512",
-    "C:\\Users\\pablo\\.nuget\\packages\\xunit.core\\2.4.2\\xunit.core.2.4.2.nupkg.sha512",
-    "C:\\Users\\pablo\\.nuget\\packages\\xunit.extensibility.core\\2.4.2\\xunit.extensibility.core.2.4.2.nupkg.sha512",
-    "C:\\Users\\pablo\\.nuget\\packages\\xunit.extensibility.execution\\2.4.2\\xunit.extensibility.execution.2.4.2.nupkg.sha512",
+    "C:\\Users\\pablo\\.nuget\\packages\\xunit.analyzers\\1.2.0\\xunit.analyzers.1.2.0.nupkg.sha512",
+    "C:\\Users\\pablo\\.nuget\\packages\\xunit.assert\\2.5.0\\xunit.assert.2.5.0.nupkg.sha512",
+    "C:\\Users\\pablo\\.nuget\\packages\\xunit.core\\2.5.0\\xunit.core.2.5.0.nupkg.sha512",
+    "C:\\Users\\pablo\\.nuget\\packages\\xunit.extensibility.core\\2.5.0\\xunit.extensibility.core.2.5.0.nupkg.sha512",
+    "C:\\Users\\pablo\\.nuget\\packages\\xunit.extensibility.execution\\2.5.0\\xunit.extensibility.execution.2.5.0.nupkg.sha512",
+    "C:\\Users\\pablo\\.nuget\\packages\\xunit.runner.utility\\2.4.1\\xunit.runner.utility.2.4.1.nupkg.sha512",
     "C:\\Users\\pablo\\.nuget\\packages\\xunit.runner.visualstudio\\2.4.5\\xunit.runner.visualstudio.2.4.5.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "AcademicNet.Tests depends on xunit (>= 2.4.5) but xunit 2.4.5 was not found. An approximate best match of xunit 2.5.0 was resolved.",
+      "libraryId": "xunit",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

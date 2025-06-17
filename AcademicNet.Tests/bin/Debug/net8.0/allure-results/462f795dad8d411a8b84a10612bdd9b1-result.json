@@ -1,0 +1,51 @@
+{
+  "uuid": "5adc2c16-75bb-495b-bc45-c8db7e59d6a4",
+  "historyId": "1d908723db6b68602d8964826d74c848",
+  "testCaseId": "1cba8a65bf46b68fb3aff9e7b0946d8a",
+  "fullName": "AcademicNet.Tests:SubjectControllerTests.Nao_Deve_Associar_Disciplina_Duplicada()",
+  "labels": [
+    {
+      "name": "thread",
+      "value": ".NET Long Running Task"
+    },
+    {
+      "name": "host",
+      "value": "DESKTOP-RI3P2DJ"
+    },
+    {
+      "name": "language",
+      "value": "C#"
+    },
+    {
+      "name": "framework",
+      "value": "xUnit.net"
+    },
+    {
+      "name": "testClass",
+      "value": "SubjectControllerTests"
+    },
+    {
+      "name": "testMethod",
+      "value": "SubjectControllerTests.Nao_Deve_Associar_Disciplina_Duplicada"
+    },
+    {
+      "name": "package",
+      "value": "SubjectControllerTests"
+    }
+  ],
+  "links": [],
+  "name": "SubjectControllerTests.Nao_Deve_Associar_Disciplina_Duplicada",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": ""
+  },
+  "stage": "finished",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "start": 1750199201106,
+  "stop": 1750199201106
+}

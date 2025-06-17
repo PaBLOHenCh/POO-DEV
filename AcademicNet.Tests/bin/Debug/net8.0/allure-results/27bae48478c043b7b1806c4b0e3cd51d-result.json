@@ -1,0 +1,51 @@
+{
+  "uuid": "4859c6aa-9108-4188-94a8-2905c7db1dae",
+  "historyId": "c7f1a85e164f80e2a308fc61e77236cc",
+  "testCaseId": "8336cfb19108d3bccfda2a343bf09cc4",
+  "fullName": "AcademicNet.Tests:StudentServiceTests.Performance_GetRanking_perStudent_100_Requisicoes()",
+  "labels": [
+    {
+      "name": "thread",
+      "value": ".NET Long Running Task"
+    },
+    {
+      "name": "host",
+      "value": "DESKTOP-RI3P2DJ"
+    },
+    {
+      "name": "language",
+      "value": "C#"
+    },
+    {
+      "name": "framework",
+      "value": "xUnit.net"
+    },
+    {
+      "name": "testClass",
+      "value": "StudentServiceTests"
+    },
+    {
+      "name": "testMethod",
+      "value": "StudentServiceTests.Performance_GetRanking_perStudent_100_Requisicoes"
+    },
+    {
+      "name": "package",
+      "value": "StudentServiceTests"
+    }
+  ],
+  "links": [],
+  "name": "StudentServiceTests.Performance_GetRanking_perStudent_100_Requisicoes",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": ""
+  },
+  "stage": "finished",
+  "steps": [],
+  "attachments": [],
+  "parameters": [],
+  "start": 1750199615115,
+  "stop": 1750199615171
+}
