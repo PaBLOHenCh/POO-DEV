@@ -4,7 +4,12 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
+using Allure.Xunit.Attributes;
+using Allure.Net.Commons;
 
+[AllureSuite("StudiesGroup Controller")]
+[AllureOwner("Pablo")]
+[AllureEpic("AcademicNet API")]
 public class StudiesGroupControllerTests : IClassFixture<CustomWebApplicationFactory>
 {
     private readonly HttpClient _client;
@@ -15,11 +20,13 @@ public class StudiesGroupControllerTests : IClassFixture<CustomWebApplicationFac
     }
 
     // teste de contrato
+    [AllureFeature("LoadStudiesGroup")]
+    [AllureSeverity(SeverityLevel.normal)]
     [Fact]
     public async Task Contract_LoadStudiesGroup_Deve_Retornar_Estrutura_Valida()
     {
         // Arrange
-        int studentId = 1; 
+        int studentId = 1;
         var response = await _client.GetAsync($"/api/studiesgroup/loadStudiesGroup?studentId={studentId}");
 
         // Assert
@@ -35,6 +42,8 @@ public class StudiesGroupControllerTests : IClassFixture<CustomWebApplicationFac
         }
     }
 
+    [AllureFeature("LoadPostages")]
+    [AllureSeverity(SeverityLevel.normal)]
     [Fact]
     public async Task Contract_LoadPostages_Deve_Retornar_Postagens_Validas()
     {
@@ -60,6 +69,8 @@ public class StudiesGroupControllerTests : IClassFixture<CustomWebApplicationFac
     }
 
     // PERFORMANCE - loadStudiesGroup
+    [AllureFeature("LoadStudiesGroup 100 Requisicoes")]
+    [AllureSeverity(SeverityLevel.normal)]
     [Fact]
     public async Task Performance_LoadStudiesGroup_100_Requisicoes()
     {
@@ -90,6 +101,9 @@ public class StudiesGroupControllerTests : IClassFixture<CustomWebApplicationFac
     // ==============================
     // PERFORMANCE - loadPostages
     // ==============================
+
+    [AllureFeature("LoadPostages 50 Páginas")]
+    [AllureSeverity(SeverityLevel.normal)]
     [Fact]
     public async Task Performance_LoadPostages_50_Paginas()
     {

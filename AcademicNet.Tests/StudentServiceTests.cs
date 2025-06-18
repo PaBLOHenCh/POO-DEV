@@ -11,7 +11,12 @@ using AcademicNet.Repositories;
 using AcademicNet.Services;
 using AcademicNet.DTO;
 using AcademicNet.Interfaces;
+using Allure.Xunit.Attributes;
+using Allure.Net.Commons;
 
+[AllureSuite("Student Service")]
+[AllureOwner("Pablo")]
+[AllureEpic("AcademicNet API")]
 public class StudentServiceTests : IClassFixture<CustomWebApplicationFactory>
 {
     private readonly AcademicNetDbContext _context;
@@ -59,6 +64,8 @@ public class StudentServiceTests : IClassFixture<CustomWebApplicationFactory>
     // TESTES DE ERRO E VALIDAÇÃO
     // ========================
 
+    [AllureFeature("Ranking per Student Invalido")]
+    [AllureSeverity(SeverityLevel.normal)]
     [Fact]
     public async Task GetRanking_perStudent_Deve_Lancar_ArgumentException_Se_Filtros_Invalidos()
     {
@@ -66,6 +73,8 @@ public class StudentServiceTests : IClassFixture<CustomWebApplicationFactory>
             _studentService.GetRanking_perStudent(unitId: 1, classId: null, subjectId: null));
     }
 
+    [AllureFeature("Ranking per Class Invalido")]
+    [AllureSeverity(SeverityLevel.normal)]
     [Fact]
     public async Task GetRanking_per_Class_Deve_Lancar_ArgumentException_Se_Filtros_Invalidos()
     {
@@ -73,6 +82,8 @@ public class StudentServiceTests : IClassFixture<CustomWebApplicationFactory>
             _studentService.GetRanking_per_Class(unitId: 1, classId: 1, subjectId: 1));
     }
 
+    [AllureFeature("Ranking per Unit Invalido")]
+    [AllureSeverity(SeverityLevel.normal)]
     [Fact]
     public async Task GetRanking_perUnit_Deve_Retornar_Sucesso_Se_SubjectId_Nulo()
     {
@@ -86,6 +97,8 @@ public class StudentServiceTests : IClassFixture<CustomWebApplicationFactory>
     // TESTES DE PERFORMANCE
     // ========================
 
+    [AllureFeature("Ranking per Student 100 Requisicoes")]
+    [AllureSeverity(SeverityLevel.normal)]
     [Fact]
     public async Task Performance_GetRanking_perStudent_100_Requisicoes()
     {
@@ -110,6 +123,8 @@ public class StudentServiceTests : IClassFixture<CustomWebApplicationFactory>
         Assert.True(duracao.TotalSeconds < 10, $"Demorou {duracao.TotalSeconds} segundos.");
     }
 
+    [AllureFeature("Ranking per Class 50 Chamadas Sequenciais")]
+    [AllureSeverity(SeverityLevel.normal)]
     [Fact]
     public async Task Performance_GetRanking_per_Class_50_Chamadas_Sequenciais()
     {

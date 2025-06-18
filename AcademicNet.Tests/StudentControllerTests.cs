@@ -69,6 +69,8 @@ public class StudentControllerTests : IClassFixture<CustomWebApplicationFactory>
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
     }
 
+    [AllureFeature("Not Create Student")]
+    [AllureSeverity(SeverityLevel.normal)]
     [Fact]
     public async Task Nao_Deve_Cadastrar_Aluno_Com_CPF_Duplicado()
     {
@@ -91,6 +93,8 @@ public class StudentControllerTests : IClassFixture<CustomWebApplicationFactory>
     }
 
 
+    [AllureFeature("Get Student By Id")]
+    [AllureSeverity(SeverityLevel.normal)]
     [Fact]
     public async Task Deve_Retornar_Aluno_Por_Id()
     {
@@ -113,6 +117,8 @@ public class StudentControllerTests : IClassFixture<CustomWebApplicationFactory>
         Assert.NotEmpty(get_body);
     }
 
+    [AllureFeature("Get 404 Student By Id")]
+    [AllureSeverity(SeverityLevel.normal)]
     [Fact]
     public async Task Deve_Retornar_404_Para_Aluno_Inexistente()
     {
@@ -123,45 +129,5 @@ public class StudentControllerTests : IClassFixture<CustomWebApplicationFactory>
 
         // Assert: Verifica 404 NotFound
         Assert.Equal(HttpStatusCode.NotFound, get_response.StatusCode);
-    }
-}
-
-
-public class SubjectControllerTests
-{
-    [Fact]
-    public async Task Deve_Criar_Disciplina_E_Associar_Turma()
-    {
-        // Arrange
-        // Act: POST /subject
-        // Assert: Verifica associação
-    }
-
-    [Fact]
-    public async Task Nao_Deve_Associar_Disciplina_Duplicada()
-    {
-        // Arrange
-        // Act
-        // Assert: Verifica erro 400
-    }
-}
-
-
-public class RankingControllerTests
-{
-    [Fact]
-    public async Task Deve_Visualizar_Ranking_Geral_Turma()
-    {
-        // Arrange
-        // Act: GET /ranking/class/{id}
-        // Assert: Verifica ordenação por média + comportamento
-    }
-
-    [Fact]
-    public async Task Deve_Visualizar_Ranking_Por_Disciplina()
-    {
-        // Arrange
-        // Act: GET /ranking/subject/{id}
-        // Assert: Verifica ordenação correta
     }
 }
